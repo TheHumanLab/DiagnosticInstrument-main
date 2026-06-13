@@ -1,0 +1,198 @@
+{
+  "product": "Founder Dependency Audit™",
+  "version": "1.0",
+  "total_questions": 30,
+  "dimensions": [
+    {
+      "code": "DA",
+      "name": "Decision Authority",
+      "weight": 0.25,
+      "questions": [
+        {
+          "id": "q1",
+          "dimension": "DA",
+          "text": "Operational decisions within defined parameters are made by the appropriate team member without my involvement or approval."
+        },
+        {
+          "id": "q2",
+          "dimension": "DA",
+          "text": "There is a documented framework that defines which decisions can be made at each level of the organisation without escalation to me."
+        },
+        {
+          "id": "q3",
+          "dimension": "DA",
+          "text": "When I am unavailable for more than 48 hours, the organisation continues to make decisions at its normal pace without accumulating a backlog requiring my attention on return."
+        },
+        {
+          "id": "q4",
+          "dimension": "DA",
+          "text": "My leadership team has the structural authority to make decisions that commit the organisation to significant operational, financial, or strategic actions within defined parameters."
+        },
+        {
+          "id": "q5",
+          "dimension": "DA",
+          "text": "Decisions made by my leadership team in my absence are not routinely revisited, reversed, or re-approved when I return."
+        },
+        {
+          "id": "q6",
+          "dimension": "DA",
+          "text": "The organisation has a defined process for making decisions in my absence that does not require my remote involvement."
+        }
+      ]
+    },
+    {
+      "code": "KI",
+      "name": "Knowledge & Intelligence",
+      "weight": 0.20,
+      "questions": [
+        {
+          "id": "q7",
+          "dimension": "KI",
+          "text": "The knowledge required to serve our key clients — their history, requirements, preferences, and relationship context — is documented and accessible to the appropriate team members without reference to me."
+        },
+        {
+          "id": "q8",
+          "dimension": "KI",
+          "text": "Our operational processes are documented to a standard that would allow a competent new team member to execute them without requiring my guidance or institutional memory."
+        },
+        {
+          "id": "q9",
+          "dimension": "KI",
+          "text": "The organisation's strategic context — why key decisions were made, what alternatives were considered, and what the current strategic priorities are — is documented and accessible to the leadership team."
+        },
+        {
+          "id": "q10",
+          "dimension": "KI",
+          "text": "Supplier relationships, commercial terms, and negotiation history are documented and held by the organisation rather than managed personally by me."
+        },
+        {
+          "id": "q11",
+          "dimension": "KI",
+          "text": "The organisation has a systematic process for capturing, documenting, and distributing knowledge as it is created — rather than relying on individuals to hold it."
+        },
+        {
+          "id": "q12",
+          "dimension": "KI",
+          "text": "If I were to leave the organisation tomorrow, the leadership team would have access to all the information required to continue operating without a significant knowledge gap."
+        }
+      ]
+    },
+    {
+      "code": "RA",
+      "name": "Relationship & Authority",
+      "weight": 0.20,
+      "questions": [
+        {
+          "id": "q13",
+          "dimension": "RA",
+          "text": "Our most significant client relationships are managed by the organisation through a defined relationship structure — not primarily through my personal involvement."
+        },
+        {
+          "id": "q14",
+          "dimension": "RA",
+          "text": "Key clients would continue their relationship with the organisation if I were no longer their primary point of contact."
+        },
+        {
+          "id": "q15",
+          "dimension": "RA",
+          "text": "Our organisation's authority and credibility with key external stakeholders — clients, partners, investors — is held institutionally, not dependent on my personal presence or reputation."
+        },
+        {
+          "id": "q16",
+          "dimension": "RA",
+          "text": "Strategic partnerships and commercial agreements are structured so that they are held by the organisation rather than contingent on my personal involvement."
+        },
+        {
+          "id": "q17",
+          "dimension": "RA",
+          "text": "My leadership team has the authority and credibility to represent the organisation in senior external conversations — with clients, investors, or partners — without my presence."
+        },
+        {
+          "id": "q18",
+          "dimension": "RA",
+          "text": "The organisation's sales and business development process does not depend on my personal involvement or reputation to generate new client relationships."
+        }
+      ]
+    },
+    {
+      "code": "OC",
+      "name": "Operational Continuity",
+      "weight": 0.20,
+      "questions": [
+        {
+          "id": "q19",
+          "dimension": "OC",
+          "text": "The organisation has operated at full capacity for a period of 30 or more consecutive days without my active involvement in operational decisions."
+        },
+        {
+          "id": "q20",
+          "dimension": "OC",
+          "text": "There is a documented operational continuity plan that defines how the organisation functions if I am absent for an extended period."
+        },
+        {
+          "id": "q21",
+          "dimension": "OC",
+          "text": "The organisation's financial operations — including payment approvals, banking authorities, and financial reporting — can be managed without my involvement within defined parameters."
+        },
+        {
+          "id": "q22",
+          "dimension": "OC",
+          "text": "Our operational rhythm — team meetings, reporting cycles, performance reviews, and project governance — continues without disruption when I am not present."
+        },
+        {
+          "id": "q23",
+          "dimension": "OC",
+          "text": "The organisation has a defined leadership hierarchy that holds operational authority in my absence — with clear accountability for decisions and outcomes."
+        },
+        {
+          "id": "q24",
+          "dimension": "OC",
+          "text": "If I were incapacitated for 90 days, the organisation would continue to operate, serve its clients, and meet its obligations without structural failure."
+        }
+      ]
+    },
+    {
+      "code": "LA",
+      "name": "Leadership Architecture",
+      "weight": 0.15,
+      "questions": [
+        {
+          "id": "q25",
+          "dimension": "LA",
+          "text": "My organisation has a leadership layer — below me — with clearly defined roles, authorities, and accountabilities that are documented and understood."
+        },
+        {
+          "id": "q26",
+          "dimension": "LA",
+          "text": "Each member of my leadership team has a defined domain of authority within which they can make decisions, commit resources, and be held accountable for outcomes — without reference to me."
+        },
+        {
+          "id": "q27",
+          "dimension": "LA",
+          "text": "My leadership team operates as a functional governance body — with a defined meeting structure, decision-making protocol, and collective accountability — not simply as a group of direct reports."
+        },
+        {
+          "id": "q28",
+          "dimension": "LA",
+          "text": "There is a defined succession of authority within my leadership team — a clear understanding of who holds organisational authority if I am absent or unavailable."
+        },
+        {
+          "id": "q29",
+          "dimension": "LA",
+          "text": "My leadership team has demonstrated the ability to resolve significant operational or strategic challenges without escalating to me for a decision."
+        },
+        {
+          "id": "q30",
+          "dimension": "LA",
+          "text": "The organisation would retain its leadership capability and structural integrity if one or two members of my leadership team were to leave simultaneously."
+        }
+      ]
+    }
+  ],
+  "scale": [
+    {"value": 1, "label": "Does not exist", "structural_meaning": "Architecturally Absent"},
+    {"value": 2, "label": "Exists informally only", "structural_meaning": "Informally Present"},
+    {"value": 3, "label": "Designed but inconsistent", "structural_meaning": "Partially Embedded"},
+    {"value": 4, "label": "Fully designed and embedded", "structural_meaning": "Structurally Sound"}
+  ]
+}

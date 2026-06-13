@@ -1,0 +1,107 @@
+{
+  "product": "Founder Dependency Audit™",
+  "version": "1.0",
+  "note": "Profile assignment uses overall index AND dimensional pattern. Pattern rules take precedence over overall index where specified.",
+  "assignment_rules": {
+    "note": "Evaluate rules in order from Profile 5 to Profile 1. Assign the first profile whose conditions are met.",
+    "profile_5": {
+      "primary_condition": "overall_index >= 80",
+      "secondary_condition": "high_critical_count >= 4",
+      "logic": "OR",
+      "description": "If overall index is 80 or above, OR four or more dimensions score High or Critical, assign Profile 5."
+    },
+    "profile_4": {
+      "primary_condition": "overall_index >= 66",
+      "secondary_condition": "DA_dependency >= 60 AND two_or_more_other_dimensions_high_critical",
+      "logic": "OR",
+      "tiebreaker": "If DA and RA both score High or Critical but OC scores Moderate or below, assign Profile 4 regardless of overall index.",
+      "description": "If overall index is 66-79, OR DA scores High/Critical AND two or more other dimensions also score High/Critical, assign Profile 4."
+    },
+    "profile_3": {
+      "primary_condition": "overall_index >= 46 AND overall_index <= 65",
+      "secondary_condition": "OC_dependency >= 60 OR LA_dependency >= 60",
+      "additional_condition": "DA_dependency < 60",
+      "logic": "AND",
+      "description": "If overall index is 46-65, AND OC or LA scores High or Critical, AND DA scores below High, assign Profile 3. Founder has stepped back from strategic decisions but remains operationally embedded."
+    },
+    "profile_2": {
+      "primary_condition": "overall_index >= 26 AND overall_index <= 45",
+      "secondary_condition": "high_critical_count <= 2",
+      "logic": "AND",
+      "description": "If overall index is 26-45 AND no more than two dimensions score High or Critical, assign Profile 2."
+    },
+    "profile_1": {
+      "primary_condition": "overall_index < 26",
+      "secondary_condition": "no dimension scores above Moderate",
+      "logic": "AND",
+      "description": "If overall index is below 26 AND no dimension scores High or Critical, assign Profile 1."
+    }
+  },
+  "profiles": {
+    "1": {
+      "number": 1,
+      "name": "The Structural Founder",
+      "overall_range": "0-25%",
+      "pattern": "Low scores across all five dimensions",
+      "description": "The organisation has been deliberately designed to function independently of founder presence. Decision authority is distributed. Knowledge is institutionalised. Relationships are structurally held. The founder leads the organisation architecturally — through design, not through presence. This is the rarest profile and the most structurally mature.",
+      "signature": [
+        "The founder is present by choice, not by structural requirement.",
+        "The leadership team exercises genuine authority across all operational domains.",
+        "The organisation's intelligence, relationships, and continuity are institutionally held.",
+        "Founder absence creates no structural disruption."
+      ]
+    },
+    "2": {
+      "number": 2,
+      "name": "The Transitional Founder",
+      "overall_range": "26-45%",
+      "pattern": "Low to moderate scores with isolated high-dependency dimensions",
+      "description": "The organisation is in structural transition. Deliberate design work has begun and independence is emerging across most dimensions. One or two dimensions retain significant dependency — typically Decision Authority or Leadership Architecture — indicating that the structural redesign is incomplete. The organisation can function without the founder in most conditions but remains vulnerable in specific structural domains.",
+      "signature": [
+        "The organisation functions independently in most operational domains.",
+        "Isolated architectural gaps remain in one or two dimensions.",
+        "The founder is no longer operationally central but has not yet fully stepped back structurally.",
+        "The transition is underway. It has not been completed."
+      ]
+    },
+    "3": {
+      "number": 3,
+      "name": "The Operational Founder",
+      "overall_range": "46-65%",
+      "pattern": "Moderate scores across most dimensions with high dependency in operational dimensions",
+      "description": "The founder has successfully removed themselves from strategic decisions but remains structurally embedded in operational ones. The organisation can hold its direction without the founder but cannot hold its operations. This profile is common in businesses that have invested in leadership development without investing in structural design. The leadership layer exists but lacks the structural authority to act independently.",
+      "signature": [
+        "Strategic decisions are made without the founder. Operational ones are not.",
+        "The leadership team is capable but structurally constrained.",
+        "The organisation moves at the speed of its operational architecture, not its strategic ambition.",
+        "Leadership development has outpaced structural design."
+      ]
+    },
+    "4": {
+      "number": 4,
+      "name": "The Central Founder",
+      "overall_range": "66-80%",
+      "pattern": "High scores across three or more dimensions",
+      "description": "The founder is structurally central to the organisation's function. This is not a reflection of the founder's willingness to delegate — it is a reflection of the organisation's structural design. The architecture routes authority, knowledge, relationships, and decisions through the founder because no alternative architecture has been built. The organisation is performing, but its performance is structurally dependent on a single individual.",
+      "signature": [
+        "The organisation performs. Its performance is architecturally dependent on one person.",
+        "The leadership team exists. It does not hold the organisation independently.",
+        "Authority, knowledge, and relationships are concentrated rather than distributed.",
+        "The structure has not been designed. It has accumulated."
+      ]
+    },
+    "5": {
+      "number": 5,
+      "name": "The Load-Bearing Founder",
+      "overall_range": "81-100%",
+      "pattern": "Critical or High scores across four or five dimensions",
+      "description": "The founder is the organisation's primary structural component. Remove the founder and the organisation does not slow — it stops. This profile is not uncommon in businesses under ten years old, but it represents the highest architectural risk in the portfolio. The organisation has no structural redundancy. Its continuity, its decisions, its relationships, and its intelligence are all personally held. This is not a scalability problem. It is a structural emergency.",
+      "signature": [
+        "The organisation does not have a structure. It has a founder.",
+        "Every critical function routes through a single individual.",
+        "There is no architectural substitute for the founder's presence.",
+        "The organisation's continuity and the founder's availability are the same thing."
+      ]
+    }
+  }
+}

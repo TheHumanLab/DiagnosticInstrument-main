@@ -1,0 +1,112 @@
+{
+  "product": "Founder Dependency Audit™",
+  "version": "1.0",
+  "note": "Risk entries are generated automatically based on dimension classification. Critical and High classifications always generate risk entries. Moderate classifications generate entries at reduced severity. Low and Independent classifications do not generate entries.",
+  "dimensions": {
+    "DA": {
+      "name": "Decision Authority",
+      "CRITICAL": {
+        "ref_prefix": "DA",
+        "severity": "CRITICAL",
+        "description": "The organisation has no decision architecture beneath the founder. Every significant decision requires founder involvement. In the event of founder absence, incapacity, or exit, the organisation loses its entire decision-making capability simultaneously.",
+        "structural_condition": "Authority Concentration"
+      },
+      "HIGH": {
+        "ref_prefix": "DA",
+        "severity": "HIGH",
+        "description": "Decision authority is informally distributed but not structurally designed. The leadership team makes decisions within unwritten boundaries that shift with context. Authority concentration at the founder level remains significant across most operational domains.",
+        "structural_condition": "Authority Concentration"
+      },
+      "MODERATE": {
+        "ref_prefix": "DA",
+        "severity": "MODERATE",
+        "description": "Decision authority has been partially distributed but the framework is incomplete. Cross-functional and strategically significant decisions continue to route to the founder. The architecture is transitional and will not hold under pressure.",
+        "structural_condition": "Partial Authority Distribution"
+      }
+    },
+    "KI": {
+      "name": "Knowledge & Intelligence",
+      "CRITICAL": {
+        "ref_prefix": "KI",
+        "severity": "CRITICAL",
+        "description": "Critical organisational knowledge — client history, operational processes, strategic context, and institutional memory — is personally held by the founder and has not been documented or distributed. Knowledge loss risk is immediate and severe.",
+        "structural_condition": "Knowledge Concentration"
+      },
+      "HIGH": {
+        "ref_prefix": "KI",
+        "severity": "HIGH",
+        "description": "Significant organisational knowledge remains personally held across multiple domains. Documentation is incomplete and inconsistently maintained. The organisation relies on the founder's memory to fill structural knowledge gaps.",
+        "structural_condition": "Knowledge Concentration"
+      },
+      "MODERATE": {
+        "ref_prefix": "KI",
+        "severity": "MODERATE",
+        "description": "Core operational knowledge is documented but strategic context and institutional reasoning remain incompletely captured. Knowledge visibility is degraded at the leadership layer for non-routine decisions.",
+        "structural_condition": "Partial Knowledge Distribution"
+      }
+    },
+    "RA": {
+      "name": "Relationship & Authority",
+      "CRITICAL": {
+        "ref_prefix": "RA",
+        "severity": "CRITICAL",
+        "description": "The organisation's key external relationships — clients, suppliers, partners, and stakeholders — are personally held by the founder. The organisation's commercial authority and market credibility are not institutionally held. Loss of the founder produces simultaneous loss of the organisation's most significant external relationships.",
+        "structural_condition": "Relationship Concentration"
+      },
+      "HIGH": {
+        "ref_prefix": "RA",
+        "severity": "HIGH",
+        "description": "The majority of significant external relationships are founder-dependent. The leadership team lacks the structural authority and organisational backing to hold senior relationships independently. Commercial growth is constrained by the founder's personal relationship capacity.",
+        "structural_condition": "Relationship Concentration"
+      },
+      "MODERATE": {
+        "ref_prefix": "RA",
+        "severity": "MODERATE",
+        "description": "External relationships are partially institutionalised. The organisation's highest-value relationships remain founder-dependent despite lower-value relationships being successfully transferred. The most commercially significant assets carry the highest architectural fragility.",
+        "structural_condition": "Partial Relationship Distribution"
+      }
+    },
+    "OC": {
+      "name": "Operational Continuity",
+      "CRITICAL": {
+        "ref_prefix": "OC",
+        "severity": "CRITICAL",
+        "description": "The organisation has no designed capacity to maintain operational continuity without the founder's active presence. Financial authorities, operational decisions, client management, and organisational rhythm all require founder involvement. Any event removing the founder from active involvement creates an immediate operational crisis.",
+        "structural_condition": "Continuity Risk"
+      },
+      "HIGH": {
+        "ref_prefix": "OC",
+        "severity": "HIGH",
+        "description": "The organisation manages founder absence through informal arrangement rather than structural design. Operational continuity is untested beyond short periods. The organisation does not know how long it can function without the founder because it has never had to find out.",
+        "structural_condition": "Continuity Risk"
+      },
+      "MODERATE": {
+        "ref_prefix": "OC",
+        "severity": "MODERATE",
+        "description": "Partial continuity capacity exists for planned, short-term founder absence. The organisation is not structurally prepared for extended or unplanned absence. Financial authority thresholds and non-routine decision escalation remain founder-dependent.",
+        "structural_condition": "Partial Continuity Design"
+      }
+    },
+    "LA": {
+      "name": "Leadership Architecture",
+      "CRITICAL": {
+        "ref_prefix": "LA",
+        "severity": "CRITICAL",
+        "description": "No functioning leadership architecture exists beneath the founder. The leadership layer is a collection of direct reports without defined authorities, documented accountabilities, or collective governance structure. The organisation cannot hold itself structurally without the founder's presence.",
+        "structural_condition": "Leadership Bottleneck"
+      },
+      "HIGH": {
+        "ref_prefix": "LA",
+        "severity": "HIGH",
+        "description": "A leadership layer exists but has not been architecturally designed. Authorities are informal, accountabilities are assumed, and the leadership team functions as a group of senior direct reports rather than a governance body. In the founder's absence, the leadership layer fragments rather than holds.",
+        "structural_condition": "Leadership Bottleneck"
+      },
+      "MODERATE": {
+        "ref_prefix": "LA",
+        "severity": "MODERATE",
+        "description": "The leadership architecture is partially designed and functions under normal conditions. Informal dependencies remain within the leadership layer that become structural vulnerabilities under pressure or during extended founder absence.",
+        "structural_condition": "Partial Leadership Design"
+      }
+    }
+  }
+}

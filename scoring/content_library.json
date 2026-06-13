@@ -1,0 +1,222 @@
+{
+  "product": "Founder Dependency Audit™",
+  "version": "1.0",
+  "note": "Each dimension has five classification tiers. Each tier contains five elements: finding, implication, structural_cost, risk, priority. These are selected by the report generator based on dimension classification.",
+  "dimensions": {
+    "DA": {
+      "name": "Decision Authority",
+      "CRITICAL": {
+        "classification": "Critical Dependency",
+        "finding": "Decision authority is architecturally concentrated at the founder level. There is no designed decision framework beneath it. Every decision of consequence — operational, commercial, strategic — routes to the founder because the structure requires it to. This is not a delegation failure. The architecture was never built.",
+        "implication": "The organisation does not make decisions. The founder makes decisions on behalf of the organisation. These are not the same thing. One scales. The other does not.",
+        "structural_cost": "Decision velocity is entirely constrained by founder availability. Every hour the founder is unreachable is an hour the organisation cannot move. That cost compounds daily.",
+        "risk": "Remove the founder and the organisation loses its entire decision architecture simultaneously. There is no designed substitute. There is no structural continuity. There is only absence.",
+        "priority": "Design a decision rights framework that assigns, documents, and distributes decision authority to the appropriate structural level. Until this exists, every other structural improvement is built on the same unstable foundation."
+      },
+      "HIGH": {
+        "classification": "High Dependency",
+        "finding": "Decision authority exists informally across the leadership layer but has not been structurally assigned. The leadership team makes decisions — but only the ones the founder has not claimed, and only when the founder is unavailable. Authority is exercised by proximity and habit, not by design.",
+        "implication": "The leadership team is capable of deciding. The structure does not confirm that they can. The result is a leadership layer that seeks validation rather than exercises authority — not because of who they are, but because of how the architecture is designed.",
+        "structural_cost": "The organisation pays a leadership tax on every decision that should be made at a lower level but travels upward instead. That tax is measured in time, leadership capacity, and organisational momentum.",
+        "risk": "Decision authority concentration at this level creates a visible leadership bottleneck. As the organisation grows, the bottleneck tightens. Growth does not resolve authority concentration. It exposes it.",
+        "priority": "Define and document the decision authority held by each leadership role. Include specific thresholds, parameters, and the conditions under which escalation is structurally required rather than culturally habitual."
+      },
+      "MODERATE": {
+        "classification": "Moderate Dependency",
+        "finding": "Decision authority has been partially distributed. The leadership team operates with genuine authority within their defined domains. At the boundaries of those domains — cross-functional decisions, commercially significant commitments, anything with strategic visibility — authority reverts to the founder. The architecture is transitional. It has been started but not completed.",
+        "implication": "The organisation functions well within its defined lanes. It slows at every intersection. The cost is not in routine operations — it is in the decisions that matter most, which are precisely the ones that still require founder involvement.",
+        "structural_cost": "Strategic and cross-functional decisions carry a disproportionate time cost. The organisation moves at two speeds — fast within functions, slow across them.",
+        "risk": "Transitional authority architecture is stable under normal conditions and fragile under pressure. When the organisation faces a decision that is urgent, complex, and cross-functional simultaneously, the architecture will not hold.",
+        "priority": "Complete the decision rights framework. Document authority boundaries for cross-functional and strategically significant decisions. Define precisely when escalation is structurally required versus when it has become organisational habit."
+      },
+      "LOW": {
+        "classification": "Low Dependency",
+        "finding": "Decision authority is distributed and largely functional. The leadership team operates with genuine structural authority across most domains. The founder's involvement in operational decisions is the exception. Decision visibility — the ability to see who decides what, at what level, under what conditions — is present and understood across the leadership layer.",
+        "implication": "Residual authority concentration exists in isolated high-consequence domains. It does not constrain daily operations but represents an architectural gap that will become more visible as the organisation scales.",
+        "structural_cost": "Minimal at current scale. The cost will increase if the remaining authority gaps are not closed before the next growth inflection point.",
+        "risk": "Isolated authority gaps create inconsistency in how the most significant decisions are made. That inconsistency is invisible until it produces a consequential outcome.",
+        "priority": "Document the remaining informal decision authorities. Complete the transition from understood to structurally embedded decision rights across all domains."
+      },
+      "INDEPENDENT": {
+        "classification": "Structural Independence",
+        "finding": "Decision authority is deliberately designed, structurally embedded, and visible across the organisation. Decision rights are documented and distributed. The founder's involvement in decisions is strategic and chosen. The organisation makes decisions at the appropriate level with consistency and without requiring founder presence to do so.",
+        "implication": "No significant authority concentration exists in this dimension. The organisation's decision velocity is determined by its architecture, not by any individual's availability.",
+        "structural_cost": "None identified in this dimension.",
+        "risk": "Low. The primary risk is architectural drift — decision rights frameworks that are not maintained become obsolete as the organisation evolves.",
+        "priority": "Maintain the decision rights framework as a living document. Review it when the organisational structure, leadership layer, or strategic priorities change."
+      }
+    },
+    "KI": {
+      "name": "Knowledge & Intelligence",
+      "CRITICAL": {
+        "classification": "Critical Dependency",
+        "finding": "The organisation's intelligence is personally held. Client history, operational processes, strategic context, commercial relationships, institutional memory — none of it has been structurally captured. It exists in the founder's knowledge and nowhere else. The organisation does not know what it knows. Only the founder does.",
+        "implication": "The organisation cannot onboard leaders effectively, cannot serve clients consistently without founder involvement, and cannot be transferred or scaled without first resolving this knowledge concentration. Every day this condition persists, the architectural weakness deepens.",
+        "structural_cost": "Every new leader hired into this organisation starts at a structural disadvantage. Every client interaction that requires context requires the founder. Every operational decision that requires institutional memory requires the founder. The cost is invisible on a spreadsheet and enormous in practice.",
+        "risk": "The departure, incapacity, or extended absence of the founder produces immediate knowledge loss across all operational domains. The organisation would not know what it knows. It would not know what it has agreed to, what it has learned, or why it operates the way it does.",
+        "priority": "Begin an immediate knowledge capture programme. Start with client knowledge and operational processes — the two domains where knowledge loss creates the most acute and most immediate commercial risk."
+      },
+      "HIGH": {
+        "classification": "High Dependency",
+        "finding": "Significant organisational knowledge remains personally held across multiple domains. Documentation exists but it is incomplete, inconsistently maintained, and not structured to the standard required for operational independence. The organisation relies on the founder's memory to fill the gaps. Those gaps are larger than they appear.",
+        "implication": "New leaders cannot reach full operational effectiveness without extended founder involvement. Client relationships cannot be transferred cleanly. Processes cannot be executed consistently without reference to institutional memory that only the founder holds.",
+        "structural_cost": "Leadership onboarding is slower and more expensive than it should be. Client transitions carry unnecessary risk. Operational consistency is founder-dependent rather than architecturally guaranteed.",
+        "risk": "Knowledge visibility is degraded across the organisation. The leadership team cannot see the full picture of what the organisation knows, has agreed to, or has learned. Decisions made without that visibility are structurally compromised.",
+        "priority": "Conduct a structured knowledge audit. Identify the highest-risk knowledge gaps. Prioritise documentation of client knowledge, key commercial relationships, and the strategic reasoning behind current operational design decisions."
+      },
+      "MODERATE": {
+        "classification": "Moderate Dependency",
+        "finding": "Core operational knowledge has been documented and is accessible. The organisation can execute its standard processes without founder involvement. Strategic context, client relationship history, and the reasoning behind key structural decisions remain incompletely documented. The organisation knows how to operate. It does not always know why it operates the way it does.",
+        "implication": "The organisation handles routine operations independently. It encounters knowledge gaps at the edges — non-routine decisions, client escalations, strategic inflection points — where institutional context is required and only partially available.",
+        "structural_cost": "Non-routine situations carry a disproportionate time cost as the leadership team reconstructs context that should already be documented. That reconstruction cost is paid repeatedly rather than once.",
+        "risk": "Strategic decision visibility is reduced. The leadership team makes decisions without full access to the institutional context that informed previous decisions. This creates strategic inconsistency that accumulates over time.",
+        "priority": "Complete the documentation of strategic context and client relationship history. Ensure the reasoning behind key structural and commercial decisions is recorded in a format accessible to the leadership team without founder involvement."
+      },
+      "LOW": {
+        "classification": "Low Dependency",
+        "finding": "Organisational knowledge is largely documented and accessible. Operational processes, client knowledge, and strategic context are available to the leadership team. Isolated knowledge gaps remain in specific domains but do not represent a systemic risk to operational continuity or decision quality.",
+        "implication": "The organisation can operate, serve clients, and make informed decisions without founder involvement in most circumstances. Knowledge visibility is sufficient for current operational needs.",
+        "structural_cost": "Minimal. Residual gaps create occasional friction but not structural risk at current scale.",
+        "risk": "Knowledge documentation that is not actively maintained degrades over time. The current low dependency rating reflects a point-in-time condition, not a permanent architectural achievement.",
+        "priority": "Establish a systematic process for capturing new knowledge as it is created. Close the remaining documented gaps. Treat knowledge architecture as a maintenance discipline rather than a one-time exercise."
+      },
+      "INDEPENDENT": {
+        "classification": "Structural Independence",
+        "finding": "Organisational knowledge is comprehensively documented, structurally held, and visible across the appropriate levels of the organisation. The organisation's intelligence does not reside in any single individual. Knowledge transfer, leadership transition, and operational continuity are all architecturally supported.",
+        "implication": "No significant knowledge concentration exists in this dimension. The organisation's intelligence is an organisational asset, not a personal one.",
+        "structural_cost": "None identified in this dimension.",
+        "risk": "Low. The primary risk is documentation drift — knowledge systems that are not maintained become incomplete as the organisation evolves.",
+        "priority": "Maintain knowledge documentation as a living operational asset. Establish a regular review cycle to ensure it remains current."
+      }
+    },
+    "RA": {
+      "name": "Relationship & Authority",
+      "CRITICAL": {
+        "classification": "Critical Dependency",
+        "finding": "The organisation's external relationships are personally held by the founder. Clients, suppliers, partners, and key stakeholders have a relationship with the founder as an individual — not with the organisation as an entity. The organisation's commercial authority, market credibility, and external visibility are all personally concentrated. Remove the founder and the organisation becomes a stranger to its own market.",
+        "implication": "The organisation cannot grow its client base, renegotiate commercial terms, or manage key relationships without the founder's personal involvement. Its commercial capacity is structurally limited to what one person can hold and maintain simultaneously.",
+        "structural_cost": "The organisation's revenue ceiling is the founder's personal relationship capacity. Every new client relationship built on the founder's personal authority is a relationship the organisation does not own. That is not growth. That is personal practice at organisational scale.",
+        "risk": "The loss of the founder produces simultaneous loss of the organisation's most significant client relationships, commercial agreements, and market authority. This is not a continuity risk. It is an existential architectural condition.",
+        "priority": "Begin the deliberate transfer of key external relationships to the organisation as an entity. Introduce leadership team members into client and partner relationships with a structured transition plan and a defined timeline."
+      },
+      "HIGH": {
+        "classification": "High Dependency",
+        "finding": "The majority of the organisation's significant external relationships are founder-dependent. The leadership team has external presence but lacks the structural authority and organisational backing to hold senior relationships independently. External stakeholders default to the founder for any conversation of consequence — not because the leadership team is incapable, but because the organisation has not structurally transferred authority to them.",
+        "implication": "Client retention, partnership renewal, and commercial negotiation all require founder involvement regardless of the leadership team's capability. The organisation's external visibility is filtered through one person.",
+        "structural_cost": "The founder's time is consumed by relationship maintenance that should be distributed across the leadership layer. That consumption limits the founder's capacity for strategic leadership and limits the organisation's capacity for commercial growth simultaneously.",
+        "risk": "Relationship visibility is concentrated. The organisation cannot see its own external relationships clearly because they are held personally rather than institutionally. That visibility gap creates commercial risk that is difficult to quantify and easy to underestimate.",
+        "priority": "Develop a structured relationship transition programme. Define which relationships transfer to which leadership roles, establish a timeline, and begin introducing organisational authority alongside founder presence in senior external conversations."
+      },
+      "MODERATE": {
+        "classification": "Moderate Dependency",
+        "finding": "External relationships are partially institutionalised. Some client and partner relationships are held by the organisation through the leadership team with genuine authority. The organisation's most commercially significant relationships — largest clients, most critical suppliers, most influential partners — remain founder-dependent. The architecture exists. It has not been applied where it matters most.",
+        "implication": "The organisation's most significant commercial relationships are its most structurally vulnerable. A disruption to the founder's availability would have a disproportionate impact on the relationships that carry the most commercial consequence.",
+        "structural_cost": "The organisation maintains two relationship architectures simultaneously — an institutionalised one for lower-value relationships and a founder-dependent one for higher-value ones. That inconsistency creates internal confusion about authority and external confusion about who the organisation's genuine leadership is.",
+        "risk": "The organisation's highest-value relationships carry the highest architectural fragility. That inversion — where the most important assets are the least structurally protected — is a governance gap that compounds with scale.",
+        "priority": "Apply the relationship architecture that has worked for lower-value relationships to the most commercially significant ones. The model exists. The discipline of applying it consistently is what is missing."
+      },
+      "LOW": {
+        "classification": "Low Dependency",
+        "finding": "The majority of the organisation's external relationships are institutionally held. The leadership team manages client, supplier, and partner relationships with genuine authority and organisational backing. The founder's involvement in external relationships is selective and strategic. External visibility of the organisation as an entity — rather than the founder as an individual — is largely established.",
+        "implication": "Residual relationship concentration exists in a small number of historically founder-connected relationships. These do not represent a systemic risk but should be addressed as part of ongoing architectural development.",
+        "structural_cost": "Minimal. The remaining founder-dependent relationships create isolated commercial risk rather than systemic fragility.",
+        "risk": "Low. The primary risk is that new significant relationships default to founder-personal rather than organisationally-held if the relationship architecture is not actively maintained as the organisation grows.",
+        "priority": "Complete the structural transfer of remaining founder-dependent relationships. Ensure that new significant relationships are institutionalised from the outset."
+      },
+      "INDEPENDENT": {
+        "classification": "Structural Independence",
+        "finding": "The organisation's external relationships are comprehensively institutionalised. Clients, suppliers, partners, and stakeholders have relationships with the organisation as an entity. The founder's personal involvement in external relationships is chosen, not required. The organisation's commercial authority and external visibility are organisationally held.",
+        "implication": "No significant relationship concentration exists in this dimension. The organisation's commercial capacity is not limited by any individual's personal relationship capacity.",
+        "structural_cost": "None identified in this dimension.",
+        "risk": "Low. The primary risk is relationship architecture drift — new relationships that are allowed to become personally dependent rather than institutionally held.",
+        "priority": "Maintain the relationship architecture as the organisation grows. New significant relationships should be structured institutionally from the outset."
+      }
+    },
+    "OC": {
+      "name": "Operational Continuity",
+      "CRITICAL": {
+        "classification": "Critical Dependency",
+        "finding": "The organisation assumes it can function without the founder. It has never demonstrated that it can. Financial authorities, operational decisions, client management, team leadership, and organisational rhythm all require the founder's active presence. The organisation has not been designed for the founder's absence. It has been designed around the founder's presence.",
+        "implication": "This is not a contingency risk. It is a permanent architectural condition that affects the organisation every day — not only when the founder is absent, but in every decision the organisation cannot make, every commitment it cannot authorise, and every problem it cannot resolve without founder involvement.",
+        "structural_cost": "The organisation's operational capacity is bounded by the founder's physical and cognitive availability. That boundary is fixed. The organisation's ambitions are not.",
+        "risk": "Any event that removes the founder from active involvement — illness, acquisition process, planned transition, or personal emergency — creates an immediate operational crisis for which the organisation has no structural response and no designed continuity.",
+        "priority": "Design and implement an operational continuity structure immediately. Begin with financial authorities and operational decision rights. These are the two domains where the absence of structural design creates the most acute and most immediate organisational risk."
+      },
+      "HIGH": {
+        "classification": "High Dependency",
+        "finding": "The organisation can manage the founder's absence for short periods through informal arrangement. It has not designed for it. The difference between managing absence and designing for it is the difference between hoping the structure holds and knowing it will. This organisation is in the first category.",
+        "implication": "Operational continuity at this level is dependent on the goodwill, initiative, and informal authority of the leadership team rather than on structural design. That is a fragile foundation. It works until it does not.",
+        "structural_cost": "Every unplanned absence creates an operational cost that is paid in leadership time, decision delay, and client risk. That cost is currently absorbed informally. It will not remain absorbable as the organisation grows.",
+        "risk": "The organisation's continuity risk is untested and unquantified. It does not know how long it can function without the founder because it has never had to find out. That is not reassurance. That is an unexamined architectural weakness.",
+        "priority": "Design a formal operational continuity structure. Define how the organisation functions under founder absence — financial authorities, decision escalation, client management, leadership continuity. Document it. Test it."
+      },
+      "MODERATE": {
+        "classification": "Moderate Dependency",
+        "finding": "The organisation has partial continuity capacity. Core operational functions continue without the founder under normal conditions. Financial authorities above defined thresholds, significant client decisions, and non-routine operational challenges continue to require founder involvement even during planned absences. The architecture handles the expected. It has not been designed for the unexpected.",
+        "implication": "The organisation can manage planned, short-term founder absences. It is not structurally prepared for extended or unplanned absence. Its continuity capacity is sufficient for predictable conditions and insufficient for the ones that matter most.",
+        "structural_cost": "Non-routine operational challenges carry a disproportionate continuity cost. The organisation pays this cost intermittently rather than continuously — which makes it easy to underestimate and difficult to justify addressing until it becomes acute.",
+        "risk": "The gap between planned and unplanned absence is where this architecture fails. The organisation has designed for the former and left the latter to chance.",
+        "priority": "Extend the continuity design to cover the domains that currently require founder involvement during absence. Address financial authority thresholds and non-routine decision escalation protocols specifically."
+      },
+      "LOW": {
+        "classification": "Low Dependency",
+        "finding": "The organisation has demonstrated operational continuity capacity under founder absence. Core functions, financial operations, client management, and operational rhythm continue without significant disruption. Residual continuity gaps exist in specific high-consequence domains but do not represent a systemic architectural risk.",
+        "implication": "The organisation is operationally resilient under most foreseeable absence scenarios. The continuity architecture has been tested and has held. Isolated gaps remain but are contained.",
+        "structural_cost": "Minimal at current scale. Residual gaps create occasional friction in high-consequence situations rather than systemic operational risk.",
+        "risk": "Low. The primary risk is that the continuity architecture is not maintained as the organisation grows and its operational complexity increases.",
+        "priority": "Address the remaining continuity gaps. Test the operational continuity structure under a planned extended absence to validate its effectiveness before it is required under unplanned conditions."
+      },
+      "INDEPENDENT": {
+        "classification": "Structural Independence",
+        "finding": "The organisation has a fully designed and tested operational continuity structure. Financial authorities, decision rights, client management, and operational rhythm are all designed to function without the founder's presence. The organisation has demonstrated this capacity under real conditions — not as a theoretical design but as a proven architectural reality.",
+        "implication": "No significant continuity concentration exists in this dimension. The organisation's operational capacity is not bounded by any individual's availability.",
+        "structural_cost": "None identified in this dimension.",
+        "risk": "Low. The primary risk is architectural drift as the organisation's operational complexity evolves beyond the current continuity design.",
+        "priority": "Maintain the operational continuity structure as a living design. Review and update it when the organisation's structure, leadership layer, or operational complexity changes significantly."
+      }
+    },
+    "LA": {
+      "name": "Leadership Architecture",
+      "CRITICAL": {
+        "classification": "Critical Dependency",
+        "finding": "There is no designed leadership layer. There is a founder and there are direct reports. The structural gap between those two things is the organisation's most significant architectural deficit. What exists is not a leadership architecture — it is a collection of capable individuals whose authority is informal, undocumented, and entirely contingent on the founder's presence to be exercised.",
+        "implication": "The organisation cannot hold itself structurally without the founder. There is no leadership layer with the authority, accountability, or architectural design to maintain organisational direction, make consequential decisions, or hold the team in the founder's absence. Leadership visibility — the ability to see who leads what, with what authority, accountable for what outcome — does not exist below the founder level.",
+        "structural_cost": "Every leadership decision that should be made by the leadership layer is made by the founder instead. That cost is paid in founder capacity, leadership development, and organisational speed simultaneously.",
+        "risk": "The organisation's structural integrity is entirely dependent on a single individual. This is not a leadership development problem. It is an organisational design problem. Development will not resolve it. Architecture will.",
+        "priority": "Design a formal leadership architecture. Define the roles, authorities, accountabilities, and governance structure of the leadership layer as a deliberate design exercise — not as a reflection of the individuals currently in post."
+      },
+      "HIGH": {
+        "classification": "High Dependency",
+        "finding": "A leadership layer exists but has not been architecturally designed. Leadership roles were created through hiring decisions rather than structural ones. Authorities are informal. Accountabilities are assumed. The leadership team functions as a group of senior direct reports rather than as a governance body with collective structural authority. Leadership visibility is partial — it is possible to see who the leaders are, but not what they are authorised to do.",
+        "implication": "The leadership team is capable but structurally incomplete. They can manage their individual domains. They cannot hold the organisation collectively. In the founder's absence, the leadership layer fragments into its component parts rather than functioning as a unified structural entity.",
+        "structural_cost": "The organisation has invested in leadership talent without investing in leadership architecture. The return on that talent investment is structurally constrained by the absence of the design that would allow it to function independently.",
+        "risk": "A leadership layer without structural design is a leadership layer that depends on the founder to hold it together. That dependency is invisible under normal conditions and acute under pressure.",
+        "priority": "Redesign the leadership layer as a structural architecture. Define the authority, accountability, and governance arrangements of the leadership team as a collective body. Establish a leadership governance structure — meeting architecture, decision protocol, and collective accountability framework."
+      },
+      "MODERATE": {
+        "classification": "Moderate Dependency",
+        "finding": "The organisation has a partially designed leadership architecture. Leadership roles have defined authorities and accountabilities in most domains. The leadership team functions with reasonable structural coherence under normal operating conditions. Leadership visibility exists at the individual role level but is incomplete at the collective governance level — it is possible to see what each leader owns, but not how the leadership layer functions as a structural whole.",
+        "implication": "The leadership layer holds the organisation effectively under stable conditions. It shows architectural strain when facing non-routine challenges, significant decisions, or the need to operate without founder involvement for extended periods.",
+        "structural_cost": "The organisation pays a governance cost at the leadership layer level. Decisions that require collective leadership authority are slower, less consistent, and more founder-dependent than they should be given the seniority of the people involved.",
+        "risk": "Partially designed leadership architecture is stable under normal conditions and fragile under pressure. The architectural gaps that are invisible today become structural vulnerabilities when the organisation faces its next significant challenge.",
+        "priority": "Complete the leadership architecture design. Address the informal dependencies that remain within the leadership layer. Establish the governance structures required for the leadership team to function as a fully independent organisational body."
+      },
+      "LOW": {
+        "classification": "Low Dependency",
+        "finding": "The organisation has a functioning leadership architecture with defined roles, authorities, and accountabilities. The leadership team operates with genuine structural authority and can hold the organisation independently in most circumstances. Leadership visibility is present — it is possible to see who leads what, with what authority, and accountable for what outcome, across the leadership layer.",
+        "implication": "The leadership architecture is structurally sound for the organisation's current scale and complexity. Isolated gaps in authority definition or governance design remain but do not undermine the overall structural integrity of the leadership layer.",
+        "structural_cost": "Minimal. Residual architectural gaps create occasional friction at the boundaries of defined authority rather than systemic leadership risk.",
+        "risk": "Low. The primary risk is architectural drift — a leadership architecture that is not maintained as the organisation grows will develop gaps that accumulate silently until they become structurally significant.",
+        "priority": "Close the remaining architectural gaps. Ensure the leadership governance structure — meeting architecture, decision protocol, collective accountability — is fully documented and consistently applied."
+      },
+      "INDEPENDENT": {
+        "classification": "Structural Independence",
+        "finding": "The organisation has a fully designed and structurally embedded leadership architecture. Leadership roles have defined authorities and accountabilities. The leadership team functions as a genuine governance body with collective structural authority. Leadership visibility is complete — the organisation can see who leads what, with what authority, accountable for what outcome, at every level of the leadership layer.",
+        "implication": "No significant leadership architecture concentration exists in this dimension. The organisation's leadership layer is designed to hold the organisation independently of the founder's presence.",
+        "structural_cost": "None identified in this dimension.",
+        "risk": "Low. The primary risk is architectural drift as the organisation's scale and complexity evolve beyond the current leadership design.",
+        "priority": "Maintain the leadership architecture as a living design. Review and update it when the organisation's scale, complexity, or strategic direction changes significantly."
+      }
+    }
+  }
+}

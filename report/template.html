@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Founder Dependency Audit™ — {{ client_name }}</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ═══════════════════════════════════════════
+     PAGE 1 — COVER
+════════════════════════════════════════════ -->
+<div class="page cover-page">
+<div class="page-inner">
+<div class="cover-top">
+<div class="cover-product-label">Kaylee-Jane</div>
+<h1 class="cover-title">Founder<br/>Dependency<br/>Audit™</h1>
+<div class="cover-subtitle">Structural Assessment of Organisational Dependency</div>
+<div class="divider-short"></div>
+<div class="cover-index-block">
+<div class="cover-index-label">Dependency Index</div>
+<div class="cover-index-value">{{ overall_index }}%</div>
+<div class="cover-index-classification">{{ overall_classification }}</div>
+</div>
+<div class="cover-profile-block">
+<div class="cover-profile-label">Founder Dependency Profile™</div>
+<div class="cover-profile-name">{{ profile_name }}</div>
+</div>
+<div class="cover-meta-grid">
+<div class="cover-meta-item">
+<div class="cover-meta-label">Prepared for</div>
+<div class="cover-meta-value">{{ client_name }}</div>
+</div>
+<div class="cover-meta-item">
+<div class="cover-meta-label">Title</div>
+<div class="cover-meta-value">{{ client_title }}</div>
+</div>
+<div class="cover-meta-item">
+<div class="cover-meta-label">Organisation</div>
+<div class="cover-meta-value">{{ organisation_name }}</div>
+</div>
+<div class="cover-meta-item">
+<div class="cover-meta-label">Assessment Date</div>
+<div class="cover-meta-value">{{ assessment_date }}</div>
+</div>
+</div>
+</div>
+<div class="cover-bottom">
+<div class="cover-brand">Kaylee-Jane  ·  Structural Governance &amp; Operational Architecture</div>
+<div class="cover-confidential">Confidential  ·  {{ submission_id }}</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 2 — STRUCTURAL NOTICE
+════════════════════════════════════════════ -->
+<div class="page notice-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<div style="flex: 1; display: flex; align-items: center;">
+<div class="notice-block">
+<div class="notice-label">Structural Notice</div>
+<p class="notice-text">
+          This report assesses the structural architecture of your organisation —
+          not your leadership capability, personal effectiveness, or management style.
+        </p>
+<p class="notice-text">
+          The findings contained in this report describe conditions that exist within
+          your organisation's design. They are not a reflection of your competence
+          as a founder or leader.
+        </p>
+<div class="notice-text-emphasis">
+          Structural dependency is not a leadership failure.<br/>
+          It is a design condition.
+        </div>
+<p class="notice-text">
+          It can be measured. It can be classified. It can be addressed through
+          deliberate structural redesign.
+        </p>
+<p class="notice-text">
+          This report tells you where that redesign is required.
+        </p>
+</div>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">2</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 3 — EXECUTIVE SUMMARY
+════════════════════════════════════════════ -->
+<div class="page summary-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<h3 class="section-label">Executive Summary</h3>
+<div class="divider"></div>
+<p class="summary-paragraph">
+      This audit assessed the structural architecture of {{ organisation_name }} across
+      five dimensions of founder dependency: Decision Authority, Knowledge &amp; Intelligence,
+      Relationship &amp; Authority, Operational Continuity, and Leadership Architecture.
+    </p>
+<p class="summary-paragraph">
+      The assessment returns a Dependency Index of <strong>{{ overall_index }}%</strong>,
+      placing {{ organisation_name }} in the <strong>{{ overall_classification }}</strong>
+      classification. {{ overall_summary }}
+    </p>
+<div class="summary-highlight">
+      {{ summary_primary_finding }}
+    </div>
+<p class="summary-paragraph">
+      {{ summary_priority_action }}
+    </p>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">3</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 4 — DEPENDENCY INDEX DASHBOARD
+════════════════════════════════════════════ -->
+<div class="page dashboard-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<h3 class="section-label">Dependency Index Dashboard</h3>
+<div class="divider"></div>
+<!-- Overall score -->
+<div class="overall-score-block">
+<div class="overall-index-number">{{ overall_index }}%</div>
+<div class="overall-index-meta">
+<div class="overall-index-label">Overall Dependency Index</div>
+<div class="overall-classification-badge">{{ overall_classification }}</div>
+</div>
+</div>
+<!-- Dimension table -->
+<table class="dimension-table">
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Score</th>
+<th></th>
+<th style="text-align:right;">Classification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="dim-name">Decision Authority</td>
+<td class="dim-score">{{ da_score }}%</td>
+<td class="dim-bar-cell">
+<div class="dim-bar-track">
+<div class="dim-bar-fill" style="width: {{ da_score }}%;"></div>
+</div>
+</td>
+<td class="dim-classification {{ da_class_css }}">{{ da_classification }}</td>
+</tr>
+<tr>
+<td class="dim-name">Knowledge &amp; Intelligence</td>
+<td class="dim-score">{{ ki_score }}%</td>
+<td class="dim-bar-cell">
+<div class="dim-bar-track">
+<div class="dim-bar-fill" style="width: {{ ki_score }}%;"></div>
+</div>
+</td>
+<td class="dim-classification {{ ki_class_css }}">{{ ki_classification }}</td>
+</tr>
+<tr>
+<td class="dim-name">Relationship &amp; Authority</td>
+<td class="dim-score">{{ ra_score }}%</td>
+<td class="dim-bar-cell">
+<div class="dim-bar-track">
+<div class="dim-bar-fill" style="width: {{ ra_score }}%;"></div>
+</div>
+</td>
+<td class="dim-classification {{ ra_class_css }}">{{ ra_classification }}</td>
+</tr>
+<tr>
+<td class="dim-name">Operational Continuity</td>
+<td class="dim-score">{{ oc_score }}%</td>
+<td class="dim-bar-cell">
+<div class="dim-bar-track">
+<div class="dim-bar-fill" style="width: {{ oc_score }}%;"></div>
+</div>
+</td>
+<td class="dim-classification {{ oc_class_css }}">{{ oc_classification }}</td>
+</tr>
+<tr>
+<td class="dim-name">Leadership Architecture</td>
+<td class="dim-score">{{ la_score }}%</td>
+<td class="dim-bar-cell">
+<div class="dim-bar-track">
+<div class="dim-bar-fill" style="width: {{ la_score }}%;"></div>
+</div>
+</td>
+<td class="dim-classification {{ la_class_css }}">{{ la_classification }}</td>
+</tr>
+</tbody>
+</table>
+<!-- Spectrum -->
+<div class="spectrum-block">
+<div class="spectrum-label">Dependency Spectrum</div>
+<div class="spectrum-track">
+<div class="spectrum-marker" style="left: {{ overall_index }}%;"></div>
+</div>
+<div class="spectrum-labels">
+<span class="spectrum-label-item">Structural<br/>Independence</span>
+<span class="spectrum-label-item">Low</span>
+<span class="spectrum-label-item">Moderate</span>
+<span class="spectrum-label-item">High</span>
+<span class="spectrum-label-item">Critical</span>
+</div>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">4</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 5 — DECISION AUTHORITY
+════════════════════════════════════════════ -->
+<div class="page dimension-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<div class="dimension-page-header">
+<div>
+<h3 class="section-label">Dimension 01</h3>
+<div class="dimension-page-title">Decision<br/>Authority</div>
+</div>
+<div class="dimension-page-score-block">
+<div class="dimension-page-score">{{ da_score }}%</div>
+<div class="dimension-page-classification {{ da_class_css }}">{{ da_classification }}</div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="content-block">
+<div class="content-block-label">Finding</div>
+<div class="content-block-text">{{ da_finding }}</div>
+</div>
+<div class="divider-light"></div>
+<div class="content-block">
+<div class="content-block-label">Implication</div>
+<div class="content-block-text secondary">{{ da_implication }}</div>
+</div>
+<div class="structural-cost-block">
+<div class="structural-cost-label">Structural Cost</div>
+<div class="structural-cost-text">{{ da_structural_cost }}</div>
+</div>
+<div class="content-block">
+<div class="content-block-label">Risk</div>
+<div class="content-block-text secondary">{{ da_risk }}</div>
+</div>
+<div class="priority-block">
+<div class="priority-label">Design Priority</div>
+<div class="priority-text">{{ da_priority }}</div>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">5</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 6 — KNOWLEDGE & INTELLIGENCE
+════════════════════════════════════════════ -->
+<div class="page dimension-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<div class="dimension-page-header">
+<div>
+<h3 class="section-label">Dimension 02</h3>
+<div class="dimension-page-title">Knowledge &amp;<br/>Intelligence</div>
+</div>
+<div class="dimension-page-score-block">
+<div class="dimension-page-score">{{ ki_score }}%</div>
+<div class="dimension-page-classification {{ ki_class_css }}">{{ ki_classification }}</div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="content-block">
+<div class="content-block-label">Finding</div>
+<div class="content-block-text">{{ ki_finding }}</div>
+</div>
+<div class="divider-light"></div>
+<div class="content-block">
+<div class="content-block-label">Implication</div>
+<div class="content-block-text secondary">{{ ki_implication }}</div>
+</div>
+<div class="structural-cost-block">
+<div class="structural-cost-label">Structural Cost</div>
+<div class="structural-cost-text">{{ ki_structural_cost }}</div>
+</div>
+<div class="content-block">
+<div class="content-block-label">Risk</div>
+<div class="content-block-text secondary">{{ ki_risk }}</div>
+</div>
+<div class="priority-block">
+<div class="priority-label">Design Priority</div>
+<div class="priority-text">{{ ki_priority }}</div>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">6</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 7 — RELATIONSHIP & AUTHORITY
+════════════════════════════════════════════ -->
+<div class="page dimension-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<div class="dimension-page-header">
+<div>
+<h3 class="section-label">Dimension 03</h3>
+<div class="dimension-page-title">Relationship &amp;<br/>Authority</div>
+</div>
+<div class="dimension-page-score-block">
+<div class="dimension-page-score">{{ ra_score }}%</div>
+<div class="dimension-page-classification {{ ra_class_css }}">{{ ra_classification }}</div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="content-block">
+<div class="content-block-label">Finding</div>
+<div class="content-block-text">{{ ra_finding }}</div>
+</div>
+<div class="divider-light"></div>
+<div class="content-block">
+<div class="content-block-label">Implication</div>
+<div class="content-block-text secondary">{{ ra_implication }}</div>
+</div>
+<div class="structural-cost-block">
+<div class="structural-cost-label">Structural Cost</div>
+<div class="structural-cost-text">{{ ra_structural_cost }}</div>
+</div>
+<div class="content-block">
+<div class="content-block-label">Risk</div>
+<div class="content-block-text secondary">{{ ra_risk }}</div>
+</div>
+<div class="priority-block">
+<div class="priority-label">Design Priority</div>
+<div class="priority-text">{{ ra_priority }}</div>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">7</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 8 — OPERATIONAL CONTINUITY
+════════════════════════════════════════════ -->
+<div class="page dimension-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<div class="dimension-page-header">
+<div>
+<h3 class="section-label">Dimension 04</h3>
+<div class="dimension-page-title">Operational<br/>Continuity</div>
+</div>
+<div class="dimension-page-score-block">
+<div class="dimension-page-score">{{ oc_score }}%</div>
+<div class="dimension-page-classification {{ oc_class_css }}">{{ oc_classification }}</div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="content-block">
+<div class="content-block-label">Finding</div>
+<div class="content-block-text">{{ oc_finding }}</div>
+</div>
+<div class="divider-light"></div>
+<div class="content-block">
+<div class="content-block-label">Implication</div>
+<div class="content-block-text secondary">{{ oc_implication }}</div>
+</div>
+<div class="structural-cost-block">
+<div class="structural-cost-label">Structural Cost</div>
+<div class="structural-cost-text">{{ oc_structural_cost }}</div>
+</div>
+<div class="content-block">
+<div class="content-block-label">Risk</div>
+<div class="content-block-text secondary">{{ oc_risk }}</div>
+</div>
+<div class="priority-block">
+<div class="priority-label">Design Priority</div>
+<div class="priority-text">{{ oc_priority }}</div>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">8</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 9 — LEADERSHIP ARCHITECTURE
+════════════════════════════════════════════ -->
+<div class="page dimension-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<div class="dimension-page-header">
+<div>
+<h3 class="section-label">Dimension 05</h3>
+<div class="dimension-page-title">Leadership<br/>Architecture</div>
+</div>
+<div class="dimension-page-score-block">
+<div class="dimension-page-score">{{ la_score }}%</div>
+<div class="dimension-page-classification {{ la_class_css }}">{{ la_classification }}</div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="content-block">
+<div class="content-block-label">Finding</div>
+<div class="content-block-text">{{ la_finding }}</div>
+</div>
+<div class="divider-light"></div>
+<div class="content-block">
+<div class="content-block-label">Implication</div>
+<div class="content-block-text secondary">{{ la_implication }}</div>
+</div>
+<div class="structural-cost-block">
+<div class="structural-cost-label">Structural Cost</div>
+<div class="structural-cost-text">{{ la_structural_cost }}</div>
+</div>
+<div class="content-block">
+<div class="content-block-label">Risk</div>
+<div class="content-block-text secondary">{{ la_risk }}</div>
+</div>
+<div class="priority-block">
+<div class="priority-label">Design Priority</div>
+<div class="priority-text">{{ la_priority }}</div>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">9</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 10 — DEPENDENCY PROFILE
+════════════════════════════════════════════ -->
+<div class="page profile-page">
+<div class="page-inner" style="position: relative;">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<h3 class="section-label">Founder Dependency Profile™</h3>
+<div class="divider"></div>
+<div class="profile-number-display">{{ profile_number }}</div>
+<div class="profile-name-display">{{ profile_name }}</div>
+<p class="profile-description">{{ profile_description }}</p>
+<div class="profile-signature-label">Organisational Signature</div>
+<ul class="profile-signature-list">
+      {{ profile_signature_items }}
+    </ul>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">10</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 11 — STRUCTURAL RISK REGISTER
+════════════════════════════════════════════ -->
+<div class="page risk-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<h3 class="section-label">Structural Risk Register</h3>
+<div class="divider"></div>
+<table class="risk-table">
+<thead>
+<tr>
+<th>Ref</th>
+<th>Dimension</th>
+<th>Risk Description</th>
+<th style="text-align:right;">Severity</th>
+</tr>
+</thead>
+<tbody>
+        {{ risk_register_rows }}
+      </tbody>
+</table>
+<div class="risk-severity-legend">
+<div class="legend-item">
+<div class="legend-dot" style="background: #e8a598;"></div>
+<div class="legend-label">Critical</div>
+</div>
+<div class="legend-item">
+<div class="legend-dot" style="background: #e8c898;"></div>
+<div class="legend-label">High</div>
+</div>
+<div class="legend-item">
+<div class="legend-dot" style="background: #c9b99a;"></div>
+<div class="legend-label">Moderate</div>
+</div>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">11</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 12 — ACTION FRAMEWORK
+════════════════════════════════════════════ -->
+<div class="page action-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<h3 class="section-label">Structural Action Framework</h3>
+<div class="divider"></div>
+<!-- Immediate -->
+<div class="action-horizon">
+<div class="action-horizon-header">
+<div class="action-horizon-label">Immediate Structural Interventions</div>
+<div class="action-horizon-timeframe">0 — 90 days</div>
+</div>
+<ul class="action-list">
+        {{ immediate_action_items }}
+      </ul>
+</div>
+<div class="divider-light"></div>
+<!-- Medium term -->
+<div class="action-horizon">
+<div class="action-horizon-header">
+<div class="action-horizon-label">Structural Design Priorities</div>
+<div class="action-horizon-timeframe">3 — 12 months</div>
+</div>
+<ul class="action-list">
+        {{ medium_action_items }}
+      </ul>
+</div>
+<div class="divider-light"></div>
+<!-- Long term -->
+<div class="action-horizon">
+<div class="action-horizon-header">
+<div class="action-horizon-label">Architectural Objectives</div>
+<div class="action-horizon-timeframe">12+ months</div>
+</div>
+<ul class="action-list">
+        {{ long_action_items }}
+      </ul>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Confidential</div>
+<div class="page-footer-right">12</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════
+     PAGE 13 — PROGRESSION PATHWAY
+════════════════════════════════════════════ -->
+<div class="page progression-page">
+<div class="page-inner">
+<div class="page-header">
+<div class="page-header-left">Founder Dependency Audit™</div>
+<div class="page-header-right">{{ organisation_name }}</div>
+</div>
+<h3 class="section-label">What Comes Next</h3>
+<div class="divider"></div>
+<p class="progression-intro">
+      This audit has identified the structural conditions within {{ organisation_name }}
+      that require architectural attention. The findings are a starting point, not a
+      destination. The following Kaylee-Jane products and services provide the
+      structural design frameworks required to address them.
+    </p>
+<div class="progression-grid">
+<div class="progression-item">
+<div class="progression-item-label">Flagship Product</div>
+<div class="progression-item-name">The Organisational Design System™</div>
+<div class="progression-item-desc">
+          The complete structural design framework for founders and leadership teams
+          ready to architect their organisation for independence, scale, and resilience.
+        </div>
+</div>
+<div class="progression-item">
+<div class="progression-item-label">Advisory Service</div>
+<div class="progression-item-name">Structural Governance Advisory™</div>
+<div class="progression-item-desc">
+          A direct advisory engagement for organisations requiring guided structural
+          redesign across governance, accountability, and decision architecture.
+        </div>
+</div>
+<div class="progression-item">
+<div class="progression-item-label">Workshop</div>
+<div class="progression-item-name">Accountability Chart Workshop™</div>
+<div class="progression-item-desc">
+          A facilitated session that designs the accountability architecture of your
+          leadership layer — roles, authorities, and structural ownership.
+        </div>
+</div>
+<div class="progression-item">
+<div class="progression-item-label">Diagnostic</div>
+<div class="progression-item-name">Organisational Maturity Evaluation™</div>
+<div class="progression-item-desc">
+          The next diagnostic instrument — assessing structural design maturity
+          across six governance dimensions with a full maturity profile and gap analysis.
+        </div>
+</div>
+</div>
+<div class="progression-cta">
+<div class="progression-cta-label">Begin the Structural Conversation</div>
+<p class="progression-cta-text">
+        If the findings in this report have identified structural conditions that
+        require immediate attention, the next step is a direct conversation with
+        Kaylee-Jane. No discovery process. No lengthy proposal. A structural
+        conversation about what your organisation needs and what addressing it requires.
+      </p>
+<div class="progression-contact">hello@kaylee-jane.com  ·  www.kaylee-jane.com</div>
+</div>
+<div class="page-footer">
+<div class="page-footer-left">Kaylee-Jane · Structural Governance &amp; Operational Architecture</div>
+<div class="page-footer-right">13</div>
+</div>
+</div>
+</div>
+</body>
+</html>

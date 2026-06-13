@@ -1,0 +1,79 @@
+{
+  "product": "Founder Dependency Audit™",
+  "version": "1.0",
+  "note": "Scores are DEPENDENCY scores — higher means more dependent. Calculated as 100 minus the independence percentage.",
+  "dimension_tiers": [
+    {
+      "min": 80,
+      "max": 100,
+      "classification": "Critical Dependency",
+      "code": "CRITICAL",
+      "risk_severity": "CRITICAL"
+    },
+    {
+      "min": 60,
+      "max": 79.9,
+      "classification": "High Dependency",
+      "code": "HIGH",
+      "risk_severity": "HIGH"
+    },
+    {
+      "min": 40,
+      "max": 59.9,
+      "classification": "Moderate Dependency",
+      "code": "MODERATE",
+      "risk_severity": "MODERATE"
+    },
+    {
+      "min": 20,
+      "max": 39.9,
+      "classification": "Low Dependency",
+      "code": "LOW",
+      "risk_severity": null
+    },
+    {
+      "min": 0,
+      "max": 19.9,
+      "classification": "Structural Independence",
+      "code": "INDEPENDENT",
+      "risk_severity": null
+    }
+  ],
+  "overall_tiers": [
+    {
+      "min": 80,
+      "max": 100,
+      "classification": "Critical Dependency",
+      "code": "CRITICAL",
+      "summary": "The organisation cannot function without the founder. This is an immediate architectural priority."
+    },
+    {
+      "min": 60,
+      "max": 79.9,
+      "classification": "High Dependency",
+      "code": "HIGH",
+      "summary": "Significant architectural reliance on the founder across multiple dimensions. Structural redesign is required."
+    },
+    {
+      "min": 40,
+      "max": 59.9,
+      "classification": "Moderate Dependency",
+      "code": "MODERATE",
+      "summary": "Dependency is present but contained. Specific dimensions require deliberate structural attention."
+    },
+    {
+      "min": 20,
+      "max": 39.9,
+      "classification": "Low Dependency",
+      "code": "LOW",
+      "summary": "The organisation is largely independent. Isolated architectural gaps remain and should be addressed."
+    },
+    {
+      "min": 0,
+      "max": 19.9,
+      "classification": "Structural Independence",
+      "code": "INDEPENDENT",
+      "summary": "The organisation is architecturally designed to function without the founder. This is the target state."
+    }
+  ]
+}

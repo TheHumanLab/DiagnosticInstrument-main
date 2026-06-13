@@ -1,0 +1,13 @@
+{
+  "name": "founder-dependency-audit",
+  "version": "1.0.0",
+  "description": "Founder Dependency Audit™ — PDF generation pipeline",
+  "private": true,
+  "scripts": {
+    "convert-pdf": "node pdf/convert_to_pdf.js",
+    "test-scoring": "python tests/test_scoring.py"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}
