@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<title>Founder Dependency Audit™ – The Human Lab</title>
+<style>
+/* ——— Founder Dependency Audit – The Human Lab ———
+   Editorial refresh: lighter type, cream accent, 10px radius
+*/
+:root {
+  --bg: #1d1d17;
+  --paper: #f5f1e9;
+  --paper-2: #ece7db;
+  --ink: #1d1d17;
+  --muted: #6b6b63;
+  --muted-2: #9a988f;
+  --line: rgba(29, 29, 23, 0.13);
+  --line-strong: rgba(29, 29, 23, 0.22);
+
+  /* Cream / warm bone accent */
+  --gold: #ddd5c7;
+  --gold-deep: #8f7d63;
+  --gold-soft: #e6ddd0;
+  --accent: var(--gold);
+  --accent-deep: var(--gold-deep);
+  --accent-soft: var(--gold-soft);
+
+  --danger: #9d3b2a;
+
+  --radius-xl: 10px;
+  --radius-lg: 10px;
+  --radius-md: 10px;
+  --radius: 10px;
+
+  --shadow: 0 18px 52px rgba(0,0,0,.18);
+  --wrap: 980px;
+  --wrap-narrow: 760px;
+  --ease: cubic-bezier(.2,.7,.2,1);
+
+  /* UI neutrals matching the cream palette */
+  --ui-border: #cbc3b3;
+  --ui-border-strong: #b9ae98;
+  --taupe-700: #6f6250;
+  --taupe-600: #5e5545;
+  --badge-bg: #e6ddd0;
+  --badge-ink: #3e3528;
+  --badge-border: #cfc5b6;
+  --select-bg: #f7f2e9;
+  --chip-active-ink: #ebe4d8;
+  --focus-ring: #b9ae9a;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--paper);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  font-weight: 400;
+}
+
+a { color: inherit; }
+button, input { font: inherit; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* Layout */
+.site-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-topbar {
+  border-bottom: 1px solid rgba(245,241,233,0.09);
+  background: rgba(29,29,23,0.86);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.topbar-inner {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.brand-mark {
+  font-size: 12.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 450;
+}
+.brand-sub {
+  font-size: 12.5px;
+  color: #bdb9ad;
+  letter-spacing: .01em;
+  font-weight: 400;
+}
+.topbar-right {
+  font-size: 12px;
+  color: #9c988c;
+  letter-spacing: .02em;
+}
+
+main {
+  flex: 1;
+  position: relative;
+}
+
+.view {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 56px 24px 72px;
+}
+
+.view-narrow {
+  max-width: var(--wrap-narrow);
+}
+
+/* Landing */
+.landing-wrap {
+  max-width: 720px;
+  margin: 56px auto 0;
+}
+.eyebrow {
+  font-size: 11.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 450;
+}
+.landing-h1 {
+  font-family: "Fraunces", "Fraunces 72pt", "Times New Roman", Georgia, serif;
+  font-weight: 420;
+  font-size: clamp(44px, 6.4vw, 76px);
+  line-height: .98;
+  letter-spacing: -0.012em;
+  margin: 18px 0 18px;
+  color: var(--paper);
+}
+.landing-lead {
+  font-size: 19px;
+  color: #d3cfc4;
+  max-width: 540px;
+  line-height: 1.65;
+  font-weight: 380;
+}
+.landing-meta {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin: 26px 0 34px;
+  color: #b9b5a8;
+  font-size: 14.5px;
+  font-weight: 400;
+}
+.meta-dot { color: #6f6c61; }
+
+.landing-card {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 30px 30px 28px;
+  box-shadow: var(--shadow);
+  margin-top: 34px;
+  border: 1px solid rgba(143,125,99,0.22);
+}
+.landing-card h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.landing-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+.landing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 22px;
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+.landing-grid strong {
+  display: block;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.landing-grid span {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  align-items: center;
+}
+.btn-primary {
+  appearance: none;
+  border: 0;
+  background: var(--accent);
+  color: #1b160d;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 15px 26px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
+  box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
+.btn-primary:hover { background: #e8e0d3; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 3px; }
+
+.btn-ghost {
+  appearance: none;
+  border: 1px solid rgba(245,241,233,0.26);
+  background: transparent;
+  color: var(--paper);
+  font-weight: 450;
+  font-size: 14.8px;
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: .15s var(--ease);
+}
+.btn-ghost:hover { border-color: rgba(245,241,233,.55); background: rgba(245,241,233,.045); }
+.btn-ghost:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.helper-note {
+  font-size: 13px;
+  color: #a49f90;
+  margin-top: 14px;
+  font-weight: 400;
+}
+
+/* Assessment layout */
+.assess-shell {
+  display: grid;
+  grid-template-columns: 246px 1fr;
+  gap: 42px;
+  align-items: start;
+}
+@media (max-width: 920px) {
+  .assess-shell { grid-template-columns: 1fr; gap: 26px; }
+}
+
+/* Dimension rail */
+.dim-rail {
+  position: sticky;
+  top: 86px;
+}
+.rail-title {
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #a09887;
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+.dim-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px;}
+.dim-chip {
+  width: 100%;
+  text-align: left;
+  background: rgba(245,241,233,0.035);
+  border: 1px solid rgba(245,241,233,0.1);
+  color: #d5d2c7;
+  border-radius: var(--radius);
+  padding: 12px 13px;
+  cursor: pointer;
+  transition: .15s var(--ease);
+  font-size: 13.7px;
+  font-weight: 400;
+}
+.dim-chip:hover { border-color: rgba(221,213,199,.55); }
+.dim-chip.active {
+  background: rgba(221,213,199,.10);
+  border-color: rgba(221,213,199,.52);
+  color: var(--chip-active-ink);
+}
+.dim-chip .dc-top {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+}
+.dim-chip .dc-code { font-weight: 500; font-size: 12.5px; letter-spacing: .04em; }
+.dim-chip .dc-count { font-size: 11.7px; color: #a49f90; font-weight: 400; }
+.dim-chip .dc-name { display:block; margin-top: 3px; color: #c8c4b7; font-size: 13px; }
+.dim-chip.active .dc-name { color: #e6ddd0; }
+
+.rail-foot {
+  margin-top: 14px;
+  font-size: 12.4px;
+  color: #8f8c7f;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* Question card */
+.q-frame {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(143,125,99,.22);
+  overflow: hidden;
+}
+
+.q-head {
+  padding: 22px 26px 18px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #f7f3e9 0%, #f5f1e9 100%);
+}
+.progress-track {
+  height: 5px;
+  background: #dcd6c8;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-deep), var(--accent));
+  border-radius: var(--radius);
+  transition: width .45s var(--ease);
+}
+.q-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  font-size: 13.25px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.q-meta strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.q-dim-label { color: var(--taupe-700); font-weight: 500; }
+
+.q-body {
+  padding: 30px 28px 22px;
+}
+.q-statement {
+  font-family: "Fraunces", "Times New Roman", Georgia, serif;
+  font-size: clamp(22px, 2.45vw, 28.5px);
+  line-height: 1.42;
+  letter-spacing: -0.006em;
+  margin: 0;
+  color: #1e1d19;
+  font-weight: 420;
+}
+.q-hint {
+  margin: 12px 0 0;
+  font-size: 13.3px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Scale */
+.scale-wrap { padding: 6px 28px 28px; }
+.scale-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 760px) {
+  .scale-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 460px) {
+  .scale-grid { grid-template-columns: 1fr; }
+}
+
+.scale-input {
+  position: absolute; opacity: 0; pointer-events: none;
+}
+
+.scale-option {
+  position: relative;
+  border: 1.5px solid #d6d0c2;
+  background: #f9f6ef;
+  border-radius: var(--radius);
+  padding: 16px 14px 15px;
+  cursor: pointer;
+  transition: border-color .15s var(--ease), background .15s var(--ease), transform .12s var(--ease), box-shadow .15s var(--ease);
+  min-height: 126px;
+  display: flex;
+  flex-direction: column;
+}
+.scale-option:hover { border-color: #c4bba8; transform: translateY(-1px); }
+.scale-option.selected {
+  border-color: var(--accent-deep);
+  background: var(--select-bg);
+  box-shadow: 0 8px 28px rgba(29,29,23,.06), inset 0 0 0 1px rgba(143,125,99,.22);
+}
+.scale-option .opt-num {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  border: 1.5px solid #c6bdab;
+  display: grid; place-items: center;
+  font-size: 13.5px; font-weight: 500;
+  color: #5b564b;
+  background: #fff;
+  margin-bottom: 10px;
+  transition: .15s var(--ease);
+}
+.scale-option.selected .opt-num {
+  background: var(--accent);
+  border-color: var(--accent-deep);
+  color: #231a0d;
+}
+.opt-label {
+  font-weight: 500;
+  font-size: 14.7px;
+  color: #282722;
+}
+.opt-meaning {
+  margin-top: 6px;
+  font-size: 12.55px;
+  color: var(--muted);
+  line-height: 1.5;
+  font-weight: 400;
+}
+.scale-option.selected .opt-meaning { color: var(--taupe-600); }
+
+.key-hint {
+  margin-top: 12px;
+  font-size: 12.3px;
+  color: #8c8575;
+  font-weight: 400;
+}
+
+/* Q nav */
+.q-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 26px 22px;
+  border-top: 1px solid var(--line);
+  background: #f7f3ea;
+  flex-wrap: wrap;
+}
+.nav-left, .nav-right { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.btn-secondary {
+  appearance: none;
+  border: 1.4px solid var(--ui-border);
+  background: #fff;
+  color: #2a2822;
+  font-weight: 450;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14.4px;
+  transition: .15s var(--ease);
+}
+.btn-secondary:hover { border-color: var(--ui-border-strong); background: #fdfbf6;}
+.btn-secondary:disabled { opacity: .45; cursor: not-allowed;}
+.btn-secondary:focus-visible,
+.btn-next:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+
+.btn-next {
+  appearance: none;
+  border: 0;
+  background: #25241f;
+  color: #f5f1e9;
+  font-weight: 500;
+  font-size: 14.7px;
+  padding: 13px 22px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: .15s var(--ease);
+  min-width: 136px;
+}
+.btn-next:hover { background: #35342d; }
+.btn-next:disabled { background: #bbb6aa; color: #6d6a60; cursor: not-allowed; }
+
+.save-link {
+  background: none; border: 0; color: #706a5b; cursor: pointer; font-size: 13.4px; padding: 6px 2px; text-decoration: underline; text-underline-offset: 3px;
+}
+.save-link:hover { color: #413a2b; }
+
+/* Results */
+.results-wrap {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.results-hero {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 34px 34px 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(143,125,99,.22);
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 30px;
+  align-items: center;
+}
+@media (max-width: 680px) {
+  .results-hero { grid-template-columns: 1fr; }
+}
+
+.score-ring-wrap {
+  position: relative;
+  width: 188px; height: 188px;
+}
+.score-ring {
+  transform: rotate(-90deg);
+}
+.score-center {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.score-big {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 54px;
+  font-weight: 450;
+  letter-spacing: -0.018em;
+  line-height: .95;
+}
+.score-sub { font-size: 11.8px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-top: 3px; font-weight: 500; }
+
+.class-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--badge-bg);
+  color: var(--badge-ink);
+  border: 1px solid var(--badge-border);
+  border-radius: var(--radius);
+  padding: 7px 13px;
+  font-size: 12.7px;
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+.class-dot { width: 7px; height: 7px; border-radius: 50%; background: #a08d73; }
+
+.results-title {
+  margin: 0 0 10px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 32px;
+  font-weight: 450;
+  letter-spacing: -0.01em;
+}
+.results-copy {
+  margin: 0;
+  color: #4a463c;
+  font-size: 15.7px;
+  line-height: 1.72;
+  max-width: 52ch;
+  font-weight: 400;
+}
+
+.results-grid {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: 1.17fr .83fr;
+  gap: 22px;
+}
+@media (max-width: 860px) {
+  .results-grid { grid-template-columns: 1fr; }
+}
+
+.panel {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+  border: 1px solid rgba(143,125,99,.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  padding: 22px 22px;
+}
+.panel h3 {
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  text-transform: uppercase;
+  letter-spacing: .11em;
+  color: #7c7566;
+  font-weight: 500;
+}
+
+/* Dimension bars */
+.dim-rows { display: grid; gap: 16px; }
+.dim-row { }
+.dim-row-top {
+  display: flex; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 7px;
+  font-size: 14.4px;
+}
+.dim-row-name { font-weight: 500; }
+.dim-row-score { color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 400; }
+.dim-track {
+  height: 9px;
+  border-radius: var(--radius);
+  background: #ddd7c8;
+  overflow: hidden;
+}
+.dim-fill {
+  height: 100%;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, var(--accent-deep), #b9a98a);
+}
+
+/* Priority list */
+.priority-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.priority-item { border-top: 1px solid var(--line); padding-top: 14px; }
+.priority-item:first-child { border-top: 0; padding-top: 0;}
+.pi-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px;}
+.pi-name { font-weight: 500; font-size: 15px;}
+.pi-score { font-size: 13.3px; color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 400;}
+.pi-note { color: #57544a; font-size: 13.9px; margin-top: 4px; line-height: 1.6; font-weight: 400; }
+
+.classification-scale {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 11.6px;
+  color: #6b6557;
+}
+.class-tier {
+  background: #f0ebe2;
+  border: 1px solid #d6cdc0;
+  border-radius: var(--radius);
+  padding: 10px 10px;
+  line-height: 1.45;
+  font-weight: 400;
+}
+.class-tier strong { display:block; color: #2b261c; margin-bottom: 2px; font-size: 12.6px; font-weight: 500;}
+.class-tier.active {
+  background: #e8e0d3;
+  border-color: var(--badge-border);
+}
+
+.results-actions {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px;
+}
+.btn-dark {
+  appearance: none; border: 0; background: #23221d; color: #f3efe5;
+  padding: 13px 18px; border-radius: var(--radius); font-weight: 500; font-size: 14.4px; cursor: pointer;
+}
+.btn-dark:hover { background: #34322a; }
+.btn-light {
+  appearance: none; border: 1.4px solid var(--ui-border); background: #fff; color: #2a2822;
+  padding: 13px 18px; border-radius: var(--radius); font-weight: 450; font-size: 14.4px; cursor: pointer;
+}
+.btn-light:hover { background: #faf7f0; }
+
+.foot-note {
+  margin-top: 22px;
+  font-size: 12.7px;
+  color: #a09887;
+  text-align: center;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Site footer */
+.site-footer {
+  border-top: 1px solid rgba(245,241,233,0.1);
+  color: #a09886;
+  font-size: 13px;
+  text-align: center;
+  padding: 28px 24px 40px;
+  font-weight: 400;
+}
+
+/* Utilities */
+.hidden { display: none !important; }
+.muted { color: var(--muted); }
+
+/* Focus */
+*:focus-visible { outline: 2px solid #a99a82; outline-offset: 2px; }
+
+/* Print */
+@media print {
+  body { background: #fff; color: #111; }
+  .site-topbar, .site-footer, .dim-rail, .q-nav, .results-actions { display: none !important; }
+  .q-frame, .panel, .results-hero { box-shadow: none; border: 1px solid #ccc; }
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(12px);
+  background: #f5f1e9;
+  color: #2a2418;
+  border: 1px solid var(--badge-border);
+  padding: 11px 16px;
+  border-radius: var(--radius);
+  font-size: 13.6px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.22);
+  opacity: 0;
+  pointer-events: none;
+  transition: .22s var(--ease);
+  z-index: 80;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<div class="site-shell">
+
+  <header class="site-topbar">
+    <div class="topbar-inner">
+      <div class="brand-lockup">
+        <span class="brand-mark">The Human Lab</span>
+        <span class="brand-sub">Founder Dependency Audit™ · v1.0</span>
+      </div>
+      <div class="topbar-right" id="topbar-status" aria-live="polite">Structural Governance Diagnostic</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== LANDING ==================== -->
+    <section id="view-landing" class="view view-narrow">
+      <div class="landing-wrap">
+        <div class="eyebrow">The Human Lab — Kaylee-Jane</div>
+        <h1 class="landing-h1">Founder<br>Dependency Audit™</h1>
+        <p class="landing-lead">A structural governance diagnostic for founder-led organisations. Measure how deeply operational capability, authority, and institutional knowledge are embedded — independently of the founder.</p>
+
+        <div class="landing-meta">
+          <span>30 questions</span><span class="meta-dot">·</span>
+          <span>5 dimensions</span><span class="meta-dot">·</span>
+          <span>~12 minutes</span><span class="meta-dot">·</span>
+          <span>Private, local-only</span>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-primary" id="btn-begin">Begin Assessment</button>
+          <button class="btn-ghost hidden" id="btn-resume">Resume saved session</button>
+        </div>
+        <div class="helper-note" id="resume-note" hidden>Saved progress found on this device.</div>
+
+        <div class="landing-card" role="note" aria-label="About this instrument">
+          <h2>Structural Governance Diagnostic</h2>
+          <p>This is a serious governance instrument, not a personality quiz. Respond based on the current, documented operational reality of your organisation — not intention, aspiration, or informal practice.</p>
+          <div class="landing-grid" aria-label="Assessment dimensions">
+            <div><strong>DA</strong><span>Decision Authority</span></div>
+            <div><strong>KI</strong><span>Knowledge &amp; Intelligence</span></div>
+            <div><strong>RA</strong><span>Relationship &amp; Authority</span></div>
+            <div><strong>OC</strong><span>Operational Continuity</span></div>
+            <div><strong>LA</strong><span>Leadership Architecture</span></div>
+            <div><strong>Scale</strong><span>1 Absent → 4 Embedded</span></div>
+          </div>
+        </div>
+
+        <p class="helper-note" style="margin-top:18px">Your responses are stored locally in your browser only. Nothing is transmitted. You can export your results as JSON at the end.</p>
+      </div>
+    </section>
+
+    <!-- ==================== ASSESSMENT ==================== -->
+    <section id="view-assessment" class="view hidden" aria-label="Assessment">
+      <div class="assess-shell">
+        <!-- Left dimension rail -->
+        <aside class="dim-rail" aria-label="Dimension progress">
+          <div class="rail-title">Dimensions</div>
+          <ol class="dim-list" id="dimension-rail"></ol>
+          <div class="rail-foot">Responses are autosaved locally.<br>Use keys 1–4 to answer.</div>
+        </aside>
+
+        <!-- Question card -->
+        <div>
+          <div class="q-frame" id="question-frame">
+            <div class="q-head">
+              <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+              <div class="q-meta">
+                <div><span class="q-dim-label" id="q-dim-label">DA · Decision Authority</span></div>
+                <div><strong id="q-counter">Question 1 of 30</strong> · <span id="q-in-dim">1 / 6 in dimension</span></div>
+              </div>
+            </div>
+
+            <div class="q-body">
+              <p class="q-statement" id="q-statement">Operational decisions within defined parameters are made by the appropriate team member without my involvement or approval.</p>
+              <p class="q-hint">Select the statement that most accurately reflects current, documented operational reality.</p>
+            </div>
+
+            <div class="scale-wrap">
+              <fieldset style="border:0;margin:0;padding:0;">
+                <legend class="sr-only" id="scale-legend">Response scale</legend>
+                <div class="scale-grid" id="scale-grid" role="radiogroup" aria-labelledby="scale-legend">
+                  <!-- options injected -->
+                </div>
+              </fieldset>
+              <div class="key-hint">Keyboard: 1–4 to select · ← / → to navigate</div>
+            </div>
+
+            <div class="q-nav">
+              <div class="nav-left">
+                <button class="btn-secondary" id="btn-prev" type="button">← Back</button>
+                <button class="save-link" id="btn-save-exit" type="button">Save &amp; exit</button>
+              </div>
+              <div class="nav-right">
+                <span id="nav-hint" class="muted" style="font-size:13.3px; margin-right:6px;">Select a response to continue</span>
+                <button class="btn-next" id="btn-next" type="button" disabled>Next →</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="helper-note" style="color:#a09887; margin-top:14px; text-align:center">Founder Dependency Audit™ · The Human Lab — All responses are confidential to this device.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RESULTS ==================== -->
+    <section id="view-results" class="view hidden" aria-label="Results">
+      <div class="results-wrap">
+        <div class="results-hero">
+          <div>
+            <div class="score-ring-wrap" aria-hidden="true">
+              <svg class="score-ring" width="188" height="188" viewBox="0 0 188 188">
+                <circle cx="94" cy="94" r="80" fill="none" stroke="#ddd5c4" stroke-width="10"/>
+                <circle id="score-arc" cx="94" cy="94" r="80" fill="none" stroke="#8f7d63" stroke-width="10" stroke-linecap="round" stroke-dasharray="502.65" stroke-dashoffset="502.65"/>
+              </svg>
+              <div class="score-center">
+                <div class="score-big" id="result-score-big">0</div>
+                <div class="score-sub">Independence</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="class-badge"><span class="class-dot" id="class-dot"></span><span id="result-class-label">—</span></div>
+            <h2 class="results-title" id="result-title">Structural Independence Score</h2>
+            <p class="results-copy" id="result-copy">Your organisation’s structural independence score reflects the degree to which decision authority, knowledge, relationships, operational continuity and leadership architecture are embedded institutionally — rather than dependent on the founder.</p>
+            <div style="margin-top:12px; font-size:13.6px; color:#655d4a;">
+              <span>Founder Dependency Index: <strong id="fdi-val" style="font-variant-numeric:tabular-nums; font-weight:500;">—</strong></span>
+              <span style="margin:0 9px; color:#b8b0a0">·</span>
+              <span>Overall mean: <strong id="overall-mean-val" style="font-weight:500;">—</strong> / 4.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-grid">
+          <div class="panel">
+            <h3>Dimension Breakdown</h3>
+            <div class="dim-rows" id="result-dim-rows"></div>
+            <div class="classification-scale" id="classification-scale"></div>
+          </div>
+
+          <div class="panel">
+            <h3>Priority Areas</h3>
+            <ol class="priority-list" id="priority-list"></ol>
+            <p style="margin:16px 0 0; color:#5a5548; font-size:13.6px; line-height:1.6;">Focus remediation on the lowest-scoring dimensions first. Establishing documented decision frameworks and leadership authority typically unlocks improvement across all other areas.</p>
+          </div>
+        </div>
+
+        <div class="results-actions">
+          <button class="btn-dark" id="btn-export">Export results (JSON)</button>
+          <button class="btn-light" id="btn-retake">Retake assessment</button>
+          <button class="btn-light" id="btn-review">Review answers</button>
+        </div>
+
+        <div class="foot-note">© The Human Lab · Kaylee-Jane – Structural Governance &amp; Operational Architecture<br>Founder Dependency Audit™ v1.0</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © The Human Lab · Kaylee-Jane – Structural Governance &amp; Operational Architecture
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Saved</div>
+
+<script>
+/* ========= AUDIT DATA ========= */
+const AUDIT = {
+  product: "Founder Dependency Audit™",
+  version: "1.0",
+  scale: [
+    { value: 1, label: "Does not exist", meaning: "Architecturally Absent" },
+    { value: 2, label: "Exists informally only", meaning: "Informally Present" },
+    { value: 3, label: "Designed but inconsistent", meaning: "Partially Embedded" },
+    { value: 4, label: "Fully designed and embedded", meaning: "Structurally Sound" }
+  ],
+  dimensions: [
+    {
+      code: "DA",
+      name: "Decision Authority",
+      weight: 0.25,
+      blurb: "The clarity and distribution of decision-making authority across the organisation.",
+      questions: [
+        { id: "q1", text: "Operational decisions within defined parameters are made by the appropriate team member without my involvement or approval." },
+        { id: "q2", text: "There is a documented framework that defines which decisions can be made at each level of the organisation without escalation to me." },
+        { id: "q3", text: "When I am unavailable for more than 48 hours, the organisation continues to make decisions at its normal pace without accumulating a backlog requiring my attention on return." },
+        { id: "q4", text: "My leadership team has the structural authority to make decisions that commit the organisation to significant operational, financial, or strategic actions within defined parameters." },
+        { id: "q5", text: "Decisions made by my leadership team in my absence are not routinely revisited, reversed, or re-approved when I return." },
+        { id: "q6", text: "The organisation has a defined process for making decisions in my absence that does not require my remote involvement." }
+      ]
+    },
+    {
+      code: "KI",
+      name: "Knowledge & Intelligence",
+      weight: 0.20,
+      blurb: "How institutional knowledge is captured, documented, and made accessible independently of the founder.",
+      questions: [
+        { id: "q7", text: "The knowledge required to serve our key clients — their history, requirements, preferences, and relationship context — is documented and accessible to the appropriate team members without reference to me." },
+        { id: "q8", text: "Our operational processes are documented to a standard that would allow a competent new team member to execute them without requiring my guidance or institutional memory." },
+        { id: "q9", text: "The organisation's strategic context — why key decisions were made, what alternatives were considered, and what the current strategic priorities are — is documented and accessible to the leadership team." },
+        { id: "q10", text: "Supplier relationships, commercial terms, and negotiation history are documented and held by the organisation rather than managed personally by me." },
+        { id: "q11", text: "The organisation has a systematic process for capturing, documenting, and distributing knowledge as it is created — rather than relying on individuals to hold it." },
+        { id: "q12", text: "If I were to leave the organisation tomorrow, the leadership team would have access to all the information required to continue operating without a significant knowledge gap." }
+      ]
+    },
+    {
+      code: "RA",
+      name: "Relationship & Authority",
+      weight: 0.20,
+      blurb: "The extent to which external relationships and organisational authority are held institutionally.",
+      questions: [
+        { id: "q13", text: "Our most significant client relationships are managed by the organisation through a defined relationship structure — not primarily through my personal involvement." },
+        { id: "q14", text: "Key clients would continue their relationship with the organisation if I were no longer their primary point of contact." },
+        { id: "q15", text: "Our organisation's authority and credibility with key external stakeholders — clients, partners, investors — is held institutionally, not dependent on my personal presence or reputation." },
+        { id: "q16", text: "Strategic partnerships and commercial agreements are structured so that they are held by the organisation rather than contingent on my personal involvement." },
+        { id: "q17", text: "My leadership team has the authority and credibility to represent the organisation in senior external conversations — with clients, investors, or partners — without my presence." },
+        { id: "q18", text: "The organisation's sales and business development process does not depend on my personal involvement or reputation to generate new client relationships." }
+      ]
+    },
+    {
+      code: "OC",
+      name: "Operational Continuity",
+      weight: 0.20,
+      blurb: "The organisation's ability to operate continuously without founder input.",
+      questions: [
+        { id: "q19", text: "The organisation has operated at full capacity for a period of 30 or more consecutive days without my active involvement in operational decisions." },
+        { id: "q20", text: "There is a documented operational continuity plan that defines how the organisation functions if I am absent for an extended period." },
+        { id: "q21", text: "The organisation's financial operations — including payment approvals, banking authorities, and financial reporting — can be managed without my involvement within defined parameters." },
+        { id: "q22", text: "Our operational rhythm — team meetings, reporting cycles, performance reviews, and project governance — continues without disruption when I am not present." },
+        { id: "q23", text: "The organisation has a defined leadership hierarchy that holds operational authority in my absence — with clear accountability for decisions and outcomes." },
+        { id: "q24", text: "If I were incapacitated for 90 days, the organisation would continue to operate, serve its clients, and meet its obligations without structural failure." }
+      ]
+    },
+    {
+      code: "LA",
+      name: "Leadership Architecture",
+      weight: 0.15,
+      blurb: "The structural capability and authority of the leadership layer below the founder.",
+      questions: [
+        { id: "q25", text: "My organisation has a leadership layer — below me — with clearly defined roles, authorities, and accountabilities that are documented and understood." },
+        { id: "q26", text: "Each member of my leadership team has a defined domain of authority within which they can make decisions, commit resources, and be held accountable for outcomes — without reference to me." },
+        { id: "q27", text: "My leadership team operates as a functional governance body — with a defined meeting structure, decision-making protocol, and collective accountability — not simply as a group of direct reports." },
+        { id: "q28", text: "There is a defined succession of authority within my leadership team — a clear understanding of who holds organisational authority if I am absent or unavailable." },
+        { id: "q29", text: "My leadership team has demonstrated the ability to resolve significant operational or strategic challenges without escalating to me for a decision." },
+        { id: "q30", text: "The organisation would retain its leadership capability and structural integrity if one or two members of my leadership team were to leave simultaneously." }
+      ]
+    }
+  ]
+};
+
+const flatQuestions = AUDIT.dimensions.flatMap(d =>
+  d.questions.map((q, qi) => ({
+    ...q,
+    dimCode: d.code,
+    dimName: d.name,
+    dimWeight: d.weight,
+    dimIndex: AUDIT.dimensions.findIndex(x => x.code === d.code),
+    indexInDim: qi
+  }))
+);
+
+const CLASSIFICATIONS = [
+  { min: 0, max: 25, key: "critical", label: "Critical Dependency", desc: "The organisation is structurally dependent on the founder for day-to-day authority, knowledge, and continuity. Immediate governance architecture work is advised." },
+  { min: 26, max: 50, key: "high", label: "High Dependency", desc: "Core functions still route through the founder. Key systems exist informally but are not structurally embedded." },
+  { min: 51, max: 70, key: "transition", label: "Structural Transition", desc: "Meaningful governance structures are in place but inconsistently applied. The organisation is actively transitioning toward independence." },
+  { min: 71, max: 85, key: "sound", label: "Structurally Sound", desc: "Decision authority, knowledge, and leadership capability are well embedded. The organisation operates with genuine independence from the founder." },
+  { min: 86, max: 100, key: "independent", label: "Architecturally Independent", desc: "The organisation is structurally independent. Leadership, authority, and continuity are fully embedded at an institutional level." }
+];
+
+const STORAGE_KEY = "fda_audit_v1_0";
+
+let state = {
+  current: 0,
+  answers: {} // q1: 1..4
+};
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return false;
+    const parsed = JSON.parse(raw);
+    if(parsed && parsed.answers){
+      state.answers = parsed.answers || {};
+      state.current = Math.min(parsed.current || 0, flatQuestions.length - 1);
+      return Object.keys(state.answers).length > 0;
+    }
+  }catch(e){}
+  return false;
+}
+
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      answers: state.answers,
+      current: state.current,
+      savedAt: new Date().toISOString(),
+      version: AUDIT.version
+    }));
+  }catch(e){}
+}
+
+function showToast(msg="Saved"){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(showToast._tid);
+  showToast._tid = setTimeout(()=> t.classList.remove('show'), 1700);
+}
+
+/* ===== Views ===== */
+const views = {
+  landing: document.getElementById('view-landing'),
+  assessment: document.getElementById('view-assessment'),
+  results: document.getElementById('view-results')
+};
+
+function go(view){
+  Object.values(views).forEach(v => v.classList.add('hidden'));
+  views[view].classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'auto' });
+  document.getElementById('topbar-status').textContent =
+    view === 'assessment' ? 'Assessment in progress — responses saved locally'
+    : view === 'results' ? 'Assessment complete'
+    : 'Structural Governance Diagnostic';
+}
+
+/* ===== Assessment rendering ===== */
+function renderDimensionRail(){
+  const rail = document.getElementById('dimension-rail');
+  rail.innerHTML = '';
+  AUDIT.dimensions.forEach((d, di) => {
+    const qIds = d.questions.map(q=>q.id);
+    const answered = qIds.filter(id => state.answers[id]).length;
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = 'dim-chip';
+    btn.type = 'button';
+    btn.innerHTML = `<div class="dc-top"><span class="dc-code">${d.code}</span><span class="dc-count">${answered}/${qIds.length}</span></div><span class="dc-name">${d.name}</span>`;
+    btn.addEventListener('click', ()=>{
+      // Jump to first unanswered in that dimension, else first
+      const target = flatQuestions.findIndex(q => q.dimCode === d.code && !state.answers[q.id]);
+      const fallback = flatQuestions.findIndex(q => q.dimCode === d.code);
+      state.current = target !== -1 ? target : (fallback !== -1 ? fallback : 0);
+      saveState();
+      renderQuestion();
+    });
+    li.appendChild(btn);
+    rail.appendChild(li);
+  });
+  updateRailActive();
+}
+
+function updateRailActive(){
+  const q = flatQuestions[state.current];
+  document.querySelectorAll('.dim-chip').forEach((el, i) => {
+    el.classList.toggle('active', AUDIT.dimensions[i].code === q.dimCode);
+  });
+  // update counts
+  document.querySelectorAll('#dimension-rail li').forEach((li, i) => {
+    const d = AUDIT.dimensions[i];
+    const answered = d.questions.filter(q => state.answers[q.id]).length;
+    const countEl = li.querySelector('.dc-count');
+    if(countEl) countEl.textContent = `${answered}/${d.questions.length}`;
+  });
+}
+
+function renderQuestion(){
+  const q = flatQuestions[state.current];
+  const answer = state.answers[q.id] || null;
+
+  document.getElementById('q-dim-label').textContent = `${q.dimCode} · ${q.dimName}`;
+  document.getElementById('q-counter').textContent = `Question ${state.current + 1} of ${flatQuestions.length}`;
+  document.getElementById('q-in-dim').textContent = `${q.indexInDim + 1} / 6 in dimension`;
+  document.getElementById('q-statement').textContent = q.text;
+
+  // progress
+  const pct = ((state.current) / flatQuestions.length) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+
+  // scale options
+  const grid = document.getElementById('scale-grid');
+  grid.innerHTML = '';
+  AUDIT.scale.forEach(opt => {
+    const id = `opt-${q.id}-${opt.value}`;
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = q.id;
+    input.value = String(opt.value);
+    input.id = id;
+    input.className = 'scale-input';
+    input.checked = answer === opt.value;
+    input.addEventListener('change', () => {
+      state.answers[q.id] = opt.value;
+      saveState();
+      updateScaleSelection();
+      updateNav();
+      updateRailActive();
+    });
+
+    const label = document.createElement('label');
+    label.setAttribute('for', id);
+    label.className = 'scale-option' + (answer === opt.value ? ' selected' : '');
+    label.innerHTML = `
+      <span class="opt-num">${opt.value}</span>
+      <span class="opt-label">${opt.label}</span>
+      <span class="opt-meaning">${opt.meaning}</span>
+    `;
+
+    const wrap = document.createElement('div');
+    wrap.appendChild(input);
+    wrap.appendChild(label);
+    grid.appendChild(wrap);
+  });
+
+  updateNav();
+  updateRailActive();
+}
+
+function updateScaleSelection(){
+  const q = flatQuestions[state.current];
+  const answer = state.answers[q.id] || null;
+  document.querySelectorAll('#scale-grid .scale-option').forEach((el, idx) => {
+    const val = AUDIT.scale[idx]?.value;
+    el.classList.toggle('selected', val === answer);
+  });
+}
+
+function updateNav(){
+  const q = flatQuestions[state.current];
+  const hasAnswer = !!state.answers[q.id];
+  document.getElementById('btn-prev').disabled = state.current === 0;
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.disabled = !hasAnswer;
+  nextBtn.textContent = state.current === flatQuestions.length - 1 ? 'View results →' : 'Next →';
+  document.getElementById('nav-hint').textContent = hasAnswer ? `${Object.keys(state.answers).length} / ${flatQuestions.length} answered` : 'Select a response to continue';
+}
+
+/* ===== Scoring ===== */
+function computeScores(){
+  const dimScores = AUDIT.dimensions.map(d => {
+    const vals = d.questions.map(q => state.answers[q.id]).filter(v => typeof v === 'number');
+    const mean = vals.length ? vals.reduce((a,b)=>a+b,0) / vals.length : 0;
+    const independence = mean ? ((mean - 1) / 3) * 100 : 0;
+    return {
+      code: d.code,
+      name: d.name,
+      weight: d.weight,
+      mean,
+      independence,
+      answered: vals.length,
+      total: d.questions.length,
+      blurb: d.blurb
+    };
+  });
+
+  const overallMean = dimScores.reduce((acc, ds) => acc + ds.mean * ds.weight, 0);
+  const structuralIndependence = ((overallMean - 1) / 3) * 100;
+  const founderDependencyIndex = 100 - structuralIndependence;
+
+  const scoreRounded = Math.round(structuralIndependence);
+
+  const classification = CLASSIFICATIONS.find(c => scoreRounded >= c.min && scoreRounded <= c.max) || CLASSIFICATIONS[2];
+
+  return {
+    dimScores,
+    overallMean,
+    structuralIndependence,
+    founderDependencyIndex,
+    scoreRounded,
+    classification
+  };
+}
+
+function renderResults(){
+  const s = computeScores();
+  document.getElementById('result-score-big').textContent = s.scoreRounded;
+  document.getElementById('result-class-label').textContent = s.classification.label;
+  document.getElementById('result-title').textContent = 'Structural Independence Score';
+  document.getElementById('result-copy').textContent = s.classification.desc;
+  document.getElementById('fdi-val').textContent = Math.round(s.founderDependencyIndex);
+  document.getElementById('overall-mean-val').textContent = s.overallMean.toFixed(2);
+
+  // score ring
+  const arc = document.getElementById('score-arc');
+  const circumference = 2 * Math.PI * 80;
+  const offset = circumference * (1 - Math.max(0, Math.min(100, s.structuralIndependence)) / 100);
+  arc.style.strokeDasharray = circumference.toFixed(2);
+  // animate
+  requestAnimationFrame(()=> {
+    arc.style.transition = 'stroke-dashoffset 1s cubic-bezier(.2,.7,.2,1)';
+    arc.style.strokeDashoffset = offset;
+  });
+
+  // dim rows
+  const rows = document.getElementById('result-dim-rows');
+  rows.innerHTML = '';
+  s.dimScores.forEach(ds => {
+    const row = document.createElement('div');
+    row.className = 'dim-row';
+    row.innerHTML = `
+      <div class="dim-row-top">
+        <span class="dim-row-name">${ds.code} · ${ds.name}</span>
+        <span class="dim-row-score">${ds.mean.toFixed(2)} / 4 · ${Math.round(ds.independence)}%</span>
+      </div>
+      <div class="dim-track"><div class="dim-fill" style="width:${ds.independence.toFixed(1)}%"></div></div>
+    `;
+    rows.appendChild(row);
+  });
+
+  // classification scale
+  const scaleEl = document.getElementById('classification-scale');
+  scaleEl.innerHTML = '';
+  [
+    {n:"0–25", l:"Critical"},
+    {n:"26–50", l:"High"},
+    {n:"51–70", l:"Transition"},
+    {n:"71–85", l:"Sound"},
+    {n:"86–100", l:"Independent"}
+  ].forEach((t, i) => {
+    const div = document.createElement('div');
+    div.className = 'class-tier' + (CLASSIFICATIONS[i].key === s.classification.key ? ' active' : '');
+    div.innerHTML = `<strong>${t.l}</strong>${t.n}`;
+    scaleEl.appendChild(div);
+  });
+
+  // Priority areas - lowest 3
+  const priority = [...s.dimScores].sort((a,b)=> a.independence - b.independence).slice(0,3);
+  const plist = document.getElementById('priority-list');
+  plist.innerHTML = '';
+  priority.forEach((ds, idx) => {
+    const li = document.createElement('li');
+    li.className = 'priority-item';
+    li.innerHTML = `
+      <div class="pi-top"><span class="pi-name">${idx+1}. ${ds.name} (${ds.code})</span><span class="pi-score">${ds.mean.toFixed(2)} / 4</span></div>
+      <div class="pi-note">${ds.blurb}</div>
+    `;
+    plist.appendChild(li);
+  });
+}
+
+/* ===== Export ===== */
+function exportJSON(){
+  const scores = computeScores();
+  const payload = {
+    product: AUDIT.product,
+    version: AUDIT.version,
+    exported_at: new Date().toISOString(),
+    answers: state.answers,
+    dimension_scores: scores.dimScores.map(d => ({
+      code: d.code,
+      name: d.name,
+      mean: Number(d.mean.toFixed(4)),
+      independence_score: Number(d.independence.toFixed(2)),
+      weight: d.weight
+    })),
+    overall_mean: Number(scores.overallMean.toFixed(4)),
+    structural_independence_score: Number(scores.structuralIndependence.toFixed(2)),
+    founder_dependency_index: Number(scores.founderDependencyIndex.toFixed(2)),
+    classification: scores.classification.label,
+    classification_key: scores.classification.key
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const dateStr = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = `founder-dependency-audit-${dateStr}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  showToast('Results exported');
+}
+
+/* ===== Event wiring ===== */
+document.getElementById('btn-begin').addEventListener('click', ()=>{
+  state.current = 0;
+  renderQuestion();
+  renderDimensionRail();
+  go('assessment');
+});
+
+document.getElementById('btn-resume').addEventListener('click', ()=>{
+  renderQuestion();
+  renderDimensionRail();
+  go('assessment');
+});
+
+document.getElementById('btn-prev').addEventListener('click', ()=>{
+  if(state.current > 0){ state.current--; saveState(); renderQuestion(); }
+});
+document.getElementById('btn-next').addEventListener('click', ()=>{
+  const q = flatQuestions[state.current];
+  if(!state.answers[q.id]) return;
+  if(state.current < flatQuestions.length - 1){
+    state.current++;
+    saveState();
+    renderQuestion();
+  } else {
+    // complete
+    saveState();
+    renderResults();
+    go('results');
+  }
+});
+
+document.getElementById('btn-save-exit').addEventListener('click', ()=>{
+  saveState();
+  showToast('Progress saved');
+  setTimeout(()=> go('landing'), 350);
+});
+
+document.getElementById('btn-export').addEventListener('click', exportJSON);
+document.getElementById('btn-retake').addEventListener('click', ()=>{
+  if(confirm('Start a new assessment? This will clear your current answers on this device.')){
+    localStorage.removeItem(STORAGE_KEY);
+    state = { current: 0, answers: {} };
+    renderQuestion();
+    renderDimensionRail();
+    document.getElementById('score-arc').style.transition = 'none';
+    document.getElementById('score-arc').style.strokeDashoffset = '502.65';
+    go('assessment');
+  }
+});
+document.getElementById('btn-review').addEventListener('click', ()=>{
+  go('assessment');
+  renderQuestion();
+});
+
+/* Keyboard shortcuts */
+document.addEventListener('keydown', (e)=>{
+  if (!views.assessment.classList.contains('hidden')) {
+    if (['1','2','3','4'].includes(e.key)) {
+      const val = Number(e.key);
+      const q = flatQuestions[state.current];
+      state.answers[q.id] = val;
+      saveState();
+      updateScaleSelection();
+      updateNav();
+      updateRailActive();
+    }
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      document.getElementById('btn-next').click();
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      document.getElementById('btn-prev').click();
+    }
+  }
+});
+
+/* ===== Init ===== */
+(function init(){
+  const had = loadState();
+  const resumeBtn = document.getElementById('btn-resume');
+  const resumeNote = document.getElementById('resume-note');
+  if(had){
+    resumeBtn.classList.remove('hidden');
+    resumeNote.hidden = false;
+    resumeBtn.textContent = `Resume saved session (${Object.keys(state.answers).length} / 30)`;
+  }
+  renderDimensionRail();
+  renderQuestion();
+})();
+</script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+</body>
+</html>
